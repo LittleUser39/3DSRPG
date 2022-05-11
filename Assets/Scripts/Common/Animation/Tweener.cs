@@ -2,7 +2,7 @@
 using System;
 using System.Collections;
 
-public abstract class Tweener : MonoBehaviour
+public abstract class Tweener : EasingControl
 {
 	#region Properties
 	public static float DefaultDuration = 1f;

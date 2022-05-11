@@ -81,7 +81,7 @@ public class Board : MonoBehaviour
     }
 
     //검사하기 전에 타일들의 prev,distance 초기화
-    void ClearSerch()
+    void ClearSearch()
     {
         foreach(Tile t in tiles.Values)
         {

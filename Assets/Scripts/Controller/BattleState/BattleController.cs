@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class BattleController : StateMachine
 {
+    //임시코드
+    public GameObject heroPrefab;
+    public Unit currentUnit;
+    public Tile currentTile { get { return board.GetTile(pos); } }
 
     //메인 카메라 컴포넌트
     //카메라가 tileselection을 따라가게 

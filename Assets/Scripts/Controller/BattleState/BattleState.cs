@@ -33,11 +33,12 @@ public abstract class BattleState : State
     }
     protected virtual void OnMove(object sender,InfoEventArgs<Point>e)
     {
-
+      
     }
+
     protected virtual void OnFire(object Sender, InfoEventArgs<int>e)
     {
-
+      
     }
     protected virtual void SelectTile(Point p)
     {
