@@ -7,6 +7,10 @@ public class Tile : MonoBehaviour
     public const float stepHeight = 0.25f;  //같은 위치에 2개 이상의 타일을 배치 해서 층을 높이거나 낮출때 y값 변화량
     public Point pos;   //타일의 좌표값을 가지고 있는 변수
     public int height;  //타일의 현재 층수를 저장하는 변수
+    public GameObject content;
+    //경로찾기에 사용할 전역 변수 - inspector뷰에서 숨긴다
+    [HideInInspector] public Tile prev;
+    [HideInInspector] public int distance;
     public Vector3 center   //해당 타일의 중심점을 반환
     {
         get
