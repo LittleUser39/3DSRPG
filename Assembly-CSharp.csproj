@@ -67,36 +67,67 @@
     <Compile Include="Assets\Scripts\Common\Animation\TransformScaleTweener.cs" />
     <Compile Include="Assets\Scripts\Common\Animation\Tweener.cs" />
     <Compile Include="Assets\Scripts\Common\Animation\Vector3Tweener.cs" />
+    <Compile Include="Assets\Scripts\Common\Notification Center\NotificationCenter.cs" />
+    <Compile Include="Assets\Scripts\Common\Notification Center\NotificationExtensions.cs" />
     <Compile Include="Assets\Scripts\Common\State Machine\State.cs" />
     <Compile Include="Assets\Scripts\Common\State Machine\StateMachine.cs" />
     <Compile Include="Assets\Scripts\Common\UI\LayoutAnchor.cs" />
     <Compile Include="Assets\Scripts\Common\UI\Panel.cs" />
+    <Compile Include="Assets\Scripts\Controller\BattleState\ActionSelectionState.cs" />
+    <Compile Include="Assets\Scripts\Controller\BattleState\BaseAbilityMenuState.cs" />
     <Compile Include="Assets\Scripts\Controller\BattleState\BattleController.cs" />
     <Compile Include="Assets\Scripts\Controller\BattleState\BattleState.cs" />
+    <Compile Include="Assets\Scripts\Controller\BattleState\CategorySelectionState.cs" />
+    <Compile Include="Assets\Scripts\Controller\BattleState\CommandSelectionState.cs" />
     <Compile Include="Assets\Scripts\Controller\BattleState\CutSceneState.cs" />
+    <Compile Include="Assets\Scripts\Controller\BattleState\ExploreState.cs" />
     <Compile Include="Assets\Scripts\Controller\BattleState\InitBattleState.cs" />
     <Compile Include="Assets\Scripts\Controller\BattleState\MoveSequenceState.cs" />
     <Compile Include="Assets\Scripts\Controller\BattleState\MoveTargetState.cs" />
     <Compile Include="Assets\Scripts\Controller\BattleState\SelectUnitState.cs" />
     <Compile Include="Assets\Scripts\Controller\ConversationController.cs" />
+    <Compile Include="Assets\Scripts\Controller\ExperienceManager.cs" />
     <Compile Include="Assets\Scripts\Controller\GameObjectPoolController.cs" />
     <Compile Include="Assets\Scripts\Controller\InputController.cs" />
     <Compile Include="Assets\Scripts\Enum\Directions.cs" />
+    <Compile Include="Assets\Scripts\Enum\EquipSlots.cs" />
+    <Compile Include="Assets\Scripts\Enum\StateTypes.cs" />
     <Compile Include="Assets\Scripts\EventArgs\InfoEventArgs.cs" />
+    <Compile Include="Assets\Scripts\Extensions\BaseException.cs" />
     <Compile Include="Assets\Scripts\Extensions\DirectionsExtenstions.cs" />
+    <Compile Include="Assets\Scripts\Extensions\Modifier\AddValueModifier.cs" />
+    <Compile Include="Assets\Scripts\Extensions\Modifier\ClampValueModifier.cs" />
+    <Compile Include="Assets\Scripts\Extensions\Modifier\MaxValueModifier.cs" />
+    <Compile Include="Assets\Scripts\Extensions\Modifier\MinValueModifier.cs" />
+    <Compile Include="Assets\Scripts\Extensions\Modifier\Modifier.cs" />
+    <Compile Include="Assets\Scripts\Extensions\Modifier\MultValueModifier.cs" />
+    <Compile Include="Assets\Scripts\Extensions\Modifier\ValueModifier.cs" />
+    <Compile Include="Assets\Scripts\Extensions\ValueChangeException.cs" />
     <Compile Include="Assets\Scripts\InputTest.cs" />
     <Compile Include="Assets\Scripts\Model\ConversationData.cs" />
     <Compile Include="Assets\Scripts\Model\LevelData.cs" />
     <Compile Include="Assets\Scripts\Model\Point.cs" />
     <Compile Include="Assets\Scripts\Model\PoolData.cs" />
     <Compile Include="Assets\Scripts\Model\SpeakerData.cs" />
+    <Compile Include="Assets\Scripts\Model\Turn.cs" />
     <Compile Include="Assets\Scripts\PreProduction\TileCreator.cs" />
     <Compile Include="Assets\Scripts\Temp\AnchorTests.cs" />
     <Compile Include="Assets\Scripts\Temp\PanelTest.cs" />
+    <Compile Include="Assets\Scripts\Temp\TestItems.cs" />
+    <Compile Include="Assets\Scripts\Temp\TestLevelGrowth.cs" />
     <Compile Include="Assets\Scripts\View Model Component\AbilityMenuEntry.cs" />
+    <Compile Include="Assets\Scripts\View Model Component\AbilityMenuPanelController.cs" />
+    <Compile Include="Assets\Scripts\View Model Component\Actor\Equipment.cs" />
+    <Compile Include="Assets\Scripts\View Model Component\Actor\Rank.cs" />
+    <Compile Include="Assets\Scripts\View Model Component\Actor\Stats.cs" />
     <Compile Include="Assets\Scripts\View Model Component\Board.cs" />
     <Compile Include="Assets\Scripts\View Model Component\CameraRig.cs" />
     <Compile Include="Assets\Scripts\View Model Component\ConversationPanel.cs" />
+    <Compile Include="Assets\Scripts\View Model Component\Features\Consumable.cs" />
+    <Compile Include="Assets\Scripts\View Model Component\Features\Feature.cs" />
+    <Compile Include="Assets\Scripts\View Model Component\Features\Item\Equippable.cs" />
+    <Compile Include="Assets\Scripts\View Model Component\Features\Item\Merchandise.cs" />
+    <Compile Include="Assets\Scripts\View Model Component\Features\StatModifierFeature.cs" />
     <Compile Include="Assets\Scripts\View Model Component\Movement\FlyMoveMent.cs" />
     <Compile Include="Assets\Scripts\View Model Component\Movement\Movement.cs" />
     <Compile Include="Assets\Scripts\View Model Component\Movement\TeleportMovement.cs" />
@@ -652,6 +683,9 @@
     <Reference Include="Unity.Rider.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.2D.Sprite.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.VisualStudio.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
     </Reference>
@@ -663,9 +697,6 @@
     </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.2D.Sprite.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

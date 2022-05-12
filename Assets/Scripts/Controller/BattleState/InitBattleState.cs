@@ -50,6 +50,10 @@ public class InitBattleState : BattleState
             unit.Place(board.GetTile(p));
             unit.Match();
 
+            //units 배열에 생성된 유닛을 담는 코드
+            //부모인 battleState의 units 변수가 있음
+            units.Add(unit);
+            
             // 영웅의 이동 방식을 넣고
             Movement m = instance.AddComponent(components[i]) as Movement;
 

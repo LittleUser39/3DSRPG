@@ -5,7 +5,10 @@ using UnityEngine;
 public abstract class BattleState : State
 {
     protected BattleController owner;
-
+    //battlecontroller에 전역변수들을 참조
+    public AbilityMenuPanelController AbilityMenuPanelController { get { return owner.abilityMenuPanelController; } }
+    public Turn turn { get { return owner.turn; } }
+    public List<Unit> units { get { return owner.units; } }
     //아래 변수들은 battlecontroller가 가지고 있는 변수
     public CameraRig CameraRig { get { return owner.cameraRig; } }
     public Board board { get { return owner.board; } }

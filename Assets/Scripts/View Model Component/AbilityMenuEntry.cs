@@ -57,7 +57,7 @@ public class AbilityMenuEntry : MonoBehaviour
         outline = label.GetComponent<Outline>();
     }
 
-    private void Reset()
+    public void Reset()
     {
         State = States.None;
     }

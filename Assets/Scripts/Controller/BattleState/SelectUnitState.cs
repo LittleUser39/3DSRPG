@@ -4,19 +4,22 @@ using UnityEngine;
 
 public class SelectUnitState : BattleState
 {
-    protected override void OnMove(object sender, InfoEventArgs<Point> e)
-    {
-        SelectTile(e.info + pos);
-    }
+    //턴순서대로 유닛이 자동으로 선택되는 방식으로 변경
+    //todo 여기서 AP순서대로 턴을 옮기도록 해야할듯?
+    
+    int index = -1;
 
-    protected override void OnFire(object sender, InfoEventArgs<int> e)
+    public override void Enter()
     {
-        GameObject content = owner.currentTile.content;
-        if (content != null)
-        {
-            owner.currentUnit = content.GetComponent<Unit>();
-            owner.ChangeState<MoveTargetState>();
-        }
+        base.Enter();
+        StartCoroutine("ChangeCurrentUnit");
+    }
+    IEnumerator ChangeCurrentUnit()
+    {
+        index = (index + 1) % units.Count;
+        turn.Change(units[index]);
+        yield return null;
+        owner.ChangeState<CommandSelectionState>();
     }
 }
 

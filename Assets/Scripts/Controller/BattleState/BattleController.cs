@@ -6,8 +6,12 @@ public class BattleController : StateMachine
 {
     //임시코드
     public GameObject heroPrefab;
-    public Unit currentUnit;
     public Tile currentTile { get { return board.GetTile(pos); } }
+    
+    //메뉴판 관리,턴정보,전체 유닛 담는 배열
+    public AbilityMenuPanelController abilityMenuPanelController;
+    public Turn turn = new Turn();
+    public List<Unit> units = new List<Unit>();
 
     //메인 카메라 컴포넌트
     //카메라가 tileselection을 따라가게 

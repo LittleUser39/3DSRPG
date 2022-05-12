@@ -6,6 +6,7 @@ public class FlyMoveMent : Movement
 {
     public override IEnumerator Traverse(Tile tile)
     {
+        //시작 타일과 대상 타일의 거리를 저장
         float xMathfPow = Mathf.Pow(tile.pos.x - unit.tile.pos.x, 2);
         float yMathfPow = Mathf.Pow(tile.pos.y - unit.tile.pos.y, 2);
 

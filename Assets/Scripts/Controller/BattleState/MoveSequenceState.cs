@@ -10,11 +10,15 @@ public class MoveSequenceState : BattleState
         StartCoroutine("Sequence");
     }
 
+    //이동 코루틴
+    //이동이 완료되면 이동한 캐릭터라는 것을 체크
     IEnumerator Sequence()
     {
-        Movement m = owner.currentUnit.GetComponent<Movement>();
+        Movement m = turn.actor.GetComponent<Movement>();
 
         yield return StartCoroutine(m.Traverse(owner.currentTile));
+
+        turn.hasUnitMoved = true;
 
         owner.ChangeState<SelectUnitState>();
     }
