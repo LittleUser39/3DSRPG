@@ -15,7 +15,7 @@ public abstract class BattleState : State
     public LevelData levelData { get { return owner.leveldata; } }
     public Transform tileselection { get { return owner.tileselection; } }
     public Point pos { get { return owner.pos; } set { owner.pos = value; } }
-
+    public StatPanelController StatPanelController { get { return owner.StatPanelController; } }
     protected virtual void Awake()
     {
         owner = GetComponent<BattleController>();
@@ -49,5 +49,48 @@ public abstract class BattleState : State
             return;
         pos = p;
         tileselection.localPosition = board.tiles[p].center;
+    }
+
+    protected virtual Unit GetUnit(Point p)
+    {
+        //선택된 타일의 정보를 참조
+        Tile t = board.GetTile(p);
+
+        //선택된 타일이 null이 아니라면
+        //선택된 타일에 있는 유닛 정보를 반환
+        GameObject content = t != null ? t.content : null;
+
+        //선택된 타일에 있는 유닛 정보를 반환
+        return content != null ? content.GetComponent<Unit>() : null;
+    }
+    
+    protected virtual void RefreshPrimaryStatPanel(Point p)
+    {
+        Unit target = GetUnit(p);
+        if(target!=null)
+        {
+            //대상의 정보를 표시
+            StatPanelController.ShowPrimary(target.gameObject);
+        }
+        else
+        {
+            //해당 UI 숨기기
+            StatPanelController.HidePrimary();
+        }
+    }
+
+    protected virtual void RefreshSecondaryStatPanel(Point p)
+    {
+        Unit target = GetUnit(p);
+        if (target != null)
+        {
+            //대상의 정보를 표시
+            StatPanelController.ShowSecondary(target.gameObject);
+        }
+        else
+        {
+            //해당 UI 숨기기
+            StatPanelController.HideSecondary();
+        }
     }
 }

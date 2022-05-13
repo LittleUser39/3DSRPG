@@ -34,35 +34,54 @@ public class InitBattleState : BattleState
 // 임시 함수
     void SpawnTestUnits()
     {
-        System.Type[] components
-            = new System.Type[]
-            { typeof(WalkMoveMent), typeof(FlyMoveMent), typeof(TeleportMovement) };
+        string[] jobs = new string[] { "Rogue", "Warrior", "Wizard" };
 
-
-        for (int i = 0; i < 3; ++i)
+        for(int i=0;i<jobs.Length;++i)
         {
-            // 영웅을 생성하고
             GameObject instance = Instantiate(owner.heroPrefab) as GameObject;
 
-            // 해당 영웅의 시작 좌표를 부여하고.
+            //heroprefab에 stats 컴포넌트 추가
+            Stats s = instance.AddComponent<Stats>();
+
+            //레벨 1
+            s[StateTypes.LVL] = 1;
+
+            //Resources/Jobs 폴더에 있는 프리팹을 로드
+            GameObject jobPrefab = Resources.Load<GameObject>("Jobs/" + jobs[i]);
+
+            //Hierarchy 뷰에 생성
+            GameObject jobInstance = Instantiate(jobPrefab) as GameObject;
+
+            //heroPrefab의 자식오브젝트로 생성
+            jobInstance.transform.SetParent(instance.transform);
+
+            //job에 job컴포넌트 가져옴
+            Job job = jobInstance.GetComponent<Job>();
+            
+            //job 이라는 직업 생성 초기능력치 설정됨
+            job.Empoly();
+
+            //성장형 능력치 설정됨
+            job.LoadDefaultStats();
+            
+            //시작위치(스폰위치)
+            //todo 나중에 이거 바꿔주면 될듯
             Point p = new Point((int)levelData.tiles[i].x, (int)levelData.tiles[i].z);
             Unit unit = instance.GetComponent<Unit>();
             unit.Place(board.GetTile(p));
             unit.Match();
 
-            //units 배열에 생성된 유닛을 담는 코드
-            //부모인 battleState의 units 변수가 있음
+            //이동 방법 걷기
+            instance.AddComponent<WalkMoveMent>();
             units.Add(unit);
-            
-            // 영웅의 이동 방식을 넣고
-            Movement m = instance.AddComponent(components[i]) as Movement;
-
-            // 이동범위와 점프 높이를 설정한다.
-            m.range = 5;
-            m.jumpHeight = 1;
         }
     }
 }
+
+
+//레벨설정 EX)
+//Rank rank=instance.AddComponent<Rank>();
+//rank.Init(10);
 
 
 

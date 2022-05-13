@@ -5,6 +5,18 @@ using UnityEngine;
 //대상을 어떤 방식으로 공격할지 결정하는 상태
 public class CategorySelectionState : BaseAbilityMenuState
 {
+    public override void Enter()
+    {
+        //해당 상태가 되면 초상화 정보를 출력
+        base.Enter();
+        StatPanelController.ShowPrimary(turn.actor.gameObject);
+    }
+    public override void Exit()
+    {
+        base.Exit();
+        //상태가 해제되면 초상화 UI를 숨기기
+        StatPanelController.HidePrimary();
+    }
     protected override void LoadMenu()
     {
         if(menuOption==null)

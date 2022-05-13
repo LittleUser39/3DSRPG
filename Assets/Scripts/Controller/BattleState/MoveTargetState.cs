@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//유닛을 선택해서 이동범위가 표시되는 상태
 public class MoveTargetState : BattleState
 {
     List<Tile> tiles;
@@ -16,6 +17,9 @@ public class MoveTargetState : BattleState
         
         tiles = mover.GetTilesInRange(board);
         board.SelectTile(tiles);
+        RefreshPrimaryStatPanel(pos);
+        //if (driver.Current == Drivers.Computer)
+          //  StartCoroutine(ComputerHighlightMoveTarget());
     }
 
     public override void Exit()
@@ -26,11 +30,13 @@ public class MoveTargetState : BattleState
         //변경된 타일들의 색상을 원래대로 변경
         board.DeSelectTiles(tiles);
         tiles = null;
+        StatPanelController.HidePrimary();
     }
 
     protected override void OnMove(object sender, InfoEventArgs<Point> e)
     {
         SelectTile(e.info + pos);
+        RefreshPrimaryStatPanel(pos);
     }
 
     protected override void OnFire(object Sender, InfoEventArgs<int> e)

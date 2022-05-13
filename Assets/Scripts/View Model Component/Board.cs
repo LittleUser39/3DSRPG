@@ -3,10 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//leveldata의 정보로 타일들을 필드로 불러오는 함수
+//타일을 불러올 때 좌표가 가장 작은값과 큰 값을 저장하는 내용
 public class Board : MonoBehaviour
 {
     [SerializeField] GameObject tilePrefab;
     public Dictionary<Point, Tile> tiles = new Dictionary<Point, Tile>();
+
+    //공격 가능 범위의 타일
+    Point _min;
+    Point _max;
+    public Point min { get { return _min; } }
+    public Point max { get { return _max; } }
 
     //선택 미선택에 따른 타일 색상
     Color selectedTileColor = new Color(0, 1, 1, 1);
@@ -23,12 +31,21 @@ public class Board : MonoBehaviour
 
     public void Load(LevelData data)
     {
+        _min = new Point(int.MaxValue, int.MaxValue);
+        _max = new Point(int.MinValue, int.MinValue);
+        
         for(int i=0; i<data.tiles.Count;++i)
         {
             GameObject instance = Instantiate(tilePrefab) as GameObject;
             Tile t = instance.GetComponent<Tile>();
             t.Load(data.tiles[i]);
             tiles.Add(t.pos, t);
+
+            //타일이 나타날수 있는 최소 및 최대 위치를 빠르게 알수 있다 
+            _min.x = Mathf.Min(_min.x, t.pos.x);
+            _min.y = Mathf.Min(_min.y, t.pos.y);
+            _max.x = Mathf.Max(_max.x, t.pos.x);
+            _max.y = Mathf.Max(_max.y, t.pos.y);
         }
     }
 

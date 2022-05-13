@@ -9,6 +9,7 @@ public abstract class Feature : MonoBehaviour
 {
     protected GameObject _target { get; private set; }
 
+    //캐릭터 생성
     public void Activate(GameObject target)
     {
         if(_target==null)
@@ -18,6 +19,7 @@ public abstract class Feature : MonoBehaviour
         }
     }
 
+    //캐릭터 삭제
     public void Deactivate()
     {
         if (_target != null)
@@ -27,6 +29,7 @@ public abstract class Feature : MonoBehaviour
         }
     }
 
+    //해당 능력치 추가
     public void Apply(GameObject target)
     {
         _target = target;

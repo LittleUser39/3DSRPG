@@ -89,6 +89,7 @@
     <Compile Include="Assets\Scripts\Controller\ExperienceManager.cs" />
     <Compile Include="Assets\Scripts\Controller\GameObjectPoolController.cs" />
     <Compile Include="Assets\Scripts\Controller\InputController.cs" />
+    <Compile Include="Assets\Scripts\Controller\StatPanelController.cs" />
     <Compile Include="Assets\Scripts\Enum\Directions.cs" />
     <Compile Include="Assets\Scripts\Enum\EquipSlots.cs" />
     <Compile Include="Assets\Scripts\Enum\StateTypes.cs" />
@@ -115,9 +116,16 @@
     <Compile Include="Assets\Scripts\Temp\PanelTest.cs" />
     <Compile Include="Assets\Scripts\Temp\TestItems.cs" />
     <Compile Include="Assets\Scripts\Temp\TestLevelGrowth.cs" />
+    <Compile Include="Assets\Scripts\View Model Component\Ability\Range\AbilityRange.cs" />
+    <Compile Include="Assets\Scripts\View Model Component\Ability\Range\ConeAbilityRange.cs" />
+    <Compile Include="Assets\Scripts\View Model Component\Ability\Range\ConstantAbilityRange.cs" />
+    <Compile Include="Assets\Scripts\View Model Component\Ability\Range\InfimiteAbilityRange.cs" />
+    <Compile Include="Assets\Scripts\View Model Component\Ability\Range\LineAbilityRange.cs" />
+    <Compile Include="Assets\Scripts\View Model Component\Ability\Range\SelfAbiltyRange.cs" />
     <Compile Include="Assets\Scripts\View Model Component\AbilityMenuEntry.cs" />
     <Compile Include="Assets\Scripts\View Model Component\AbilityMenuPanelController.cs" />
     <Compile Include="Assets\Scripts\View Model Component\Actor\Equipment.cs" />
+    <Compile Include="Assets\Scripts\View Model Component\Actor\Job.cs" />
     <Compile Include="Assets\Scripts\View Model Component\Actor\Rank.cs" />
     <Compile Include="Assets\Scripts\View Model Component\Actor\Stats.cs" />
     <Compile Include="Assets\Scripts\View Model Component\Board.cs" />
@@ -133,6 +141,7 @@
     <Compile Include="Assets\Scripts\View Model Component\Movement\TeleportMovement.cs" />
     <Compile Include="Assets\Scripts\View Model Component\Movement\WalkMoveMent.cs" />
     <Compile Include="Assets\Scripts\View Model Component\Poolable.cs" />
+    <Compile Include="Assets\Scripts\View Model Component\StatPanel.cs" />
     <Compile Include="Assets\Scripts\View Model Component\Tile.cs" />
     <Compile Include="Assets\Scripts\View Model Component\Unit.cs" />
   </ItemGroup>

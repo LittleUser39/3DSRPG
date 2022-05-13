@@ -4,8 +4,9 @@ using UnityEngine;
 
 public abstract class Movement : MonoBehaviour
 {
-    public int range;       //이동범위
-    public int jumpHeight;  //점프 높이
+    public int range{get { return stats[StateTypes.MOV]; } } //이동범위
+    public int jumpHeight { get { return stats[StateTypes.JMP]; } }  //점프 높이
+    protected Stats stats;
     protected Unit unit;    //이동하는 개체 (monster or hero)
     protected Transform jumper;
 
@@ -14,7 +15,10 @@ public abstract class Movement : MonoBehaviour
         unit = GetComponent<Unit>();
         jumper = transform.Find("Jumper");
     }
-
+    private void Start()
+    {
+        stats = GetComponent<Stats>();
+    }
     public virtual List<Tile>GetTilesInRange(Board board)
     {
         List<Tile> retValue = board.Search(unit.tile, ExpandSearch);

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+//아이템을 장착하거나 장착해제하는 기능들을 하는 클래스
 public class Equipment : MonoBehaviour
 {
     public const string EquippedNotification = "Equipment.EquippedNotification";

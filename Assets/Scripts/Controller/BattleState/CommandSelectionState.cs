@@ -2,8 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//유닛을 선택했을때 (Move,Action,Wait)중 고르는 상태
+//
 public class CommandSelectionState : BaseAbilityMenuState
 {
+    public override void Enter()
+    {
+        //해당 상태가 되면 초상화 정보를 출력
+        base.Enter();
+        StatPanelController.ShowPrimary(turn.actor.gameObject);
+    }
+    public override void Exit()
+    {
+        base.Exit();
+        //상태가 해제되면 초상화 UI를 숨기기
+        StatPanelController.HidePrimary();
+    }
     protected override void Cancel()
     {
         if (turn.hasUnitMoved && !turn.lockMove)

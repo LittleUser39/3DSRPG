@@ -14,7 +14,7 @@ public class StatModifierFeature : Feature
     {
         get
         {
-            return _target.GetComponent<Stats>();
+            return _target.GetComponentInParent<Stats>();
         }
     }
 

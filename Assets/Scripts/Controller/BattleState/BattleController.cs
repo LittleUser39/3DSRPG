@@ -7,7 +7,7 @@ public class BattleController : StateMachine
     //임시코드
     public GameObject heroPrefab;
     public Tile currentTile { get { return board.GetTile(pos); } }
-    
+    public StatPanelController StatPanelController;
     //메뉴판 관리,턴정보,전체 유닛 담는 배열
     public AbilityMenuPanelController abilityMenuPanelController;
     public Turn turn = new Turn();

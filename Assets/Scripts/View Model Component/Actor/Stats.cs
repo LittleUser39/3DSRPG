@@ -22,9 +22,11 @@ public class Stats : MonoBehaviour
         int oldValue = this[type];
 
         //현재 수치와 변경될 수치가 같으면 리턴
-        if (oldValue == value) return;
-
-        if(allowExceptions)
+        if (oldValue == value)
+        {
+            return;
+        }
+        if (allowExceptions)
         {
             //계산기를 만듬, 아직 어떤 계산이 될지 미정
             ValueChangeException exc = new ValueChangeException(oldValue, value);
@@ -35,12 +37,14 @@ public class Stats : MonoBehaviour
 
             //등록된 계산 방식으로 최종값을 담음
             value = Mathf.FloorToInt(exc.GetModifiedValue());
-
+           
             //BaseException.toggle 이 false 거나
             //value가 oldValue 값이 변경되지 않았다면
             if (exc.toggle == false || value == oldValue)
+            {
                 //무효처리
                 return;
+            }
         }
 
         //해당 능력치를 계산된 값으로 변경
