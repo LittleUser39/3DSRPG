@@ -55,17 +55,21 @@ public class CategorySelectionState : BaseAbilityMenuState
 
     void Attack()
     {
-        //공격 했음으로 체크
-        turn.hasUnitActed = true;
+        turn.ability = turn.actor.GetComponentInChildren<AbilityRange>().gameObject;
+        owner.ChangeState<AbilityTargetState>();
 
-        if(turn.hasUnitMoved)
-        {
-            //이미 이동을 한 상태이면 lockMove도 true 처리
-            turn.lockMove = true;
-        }
+        //abilitytargetstate으로 이동
+        ////공격 했음으로 체크
+        //turn.hasUnitActed = true;
 
-        //명령대기 상태로 돌아감
-        owner.ChangeState<CommandSelectionState>();
+        //if(turn.hasUnitMoved)
+        //{
+        //    //이미 이동을 한 상태이면 lockMove도 true 처리
+        //    turn.lockMove = true;
+        //}
+
+        ////명령대기 상태로 돌아감
+        //owner.ChangeState<CommandSelectionState>();
     }
 
     //특수 공격을 했을때의 처리

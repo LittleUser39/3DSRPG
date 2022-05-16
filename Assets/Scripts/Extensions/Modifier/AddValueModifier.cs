@@ -12,8 +12,8 @@ public class AddValueModifier : ValueModifier
     }
 
     //두 수치를 더한 값을 반환
-    public override float Modify(float value)
+    public override float Modify(float toValue,float formValue)
     {
-        return value + toAdd;
+        return toValue + toAdd;
     }
 }

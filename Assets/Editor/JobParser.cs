@@ -67,7 +67,12 @@ public static class JobParser
             //baseStats에 해당 능력치 값을 넣는다
             job.baseStats[i - 1] = Convert.ToInt32(elements[i]);
         }
-
+        //회피에 대한 능력치를 설정
+        StatModifierFeature evade = GetFeature(obj, StateTypes.EVD);
+        evade.amount = Convert.ToInt32(elements[8]);
+        //저항에 대한 능력치를 설정
+        StatModifierFeature res = GetFeature(obj, StateTypes.RES);
+        res.amount = Convert.ToInt32(elements[9]);
         //이동에 대한 능력치 설정
         StatModifierFeature move = GetFeature(obj, StateTypes.MOV);
 

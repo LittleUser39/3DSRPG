@@ -43,7 +43,7 @@ public class ValueChangeException : BaseException
     
         for(int i=0;i<modifiers.Count;++i)
         {
-            value = modifiers[i].Modify(value);
+            value = modifiers[i].Modify(fromValue,value);
         }
 
         return value;

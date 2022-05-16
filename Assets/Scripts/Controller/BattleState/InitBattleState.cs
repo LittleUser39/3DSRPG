@@ -25,6 +25,10 @@ public class InitBattleState : BattleState
         // 임시 코드(영웅을 소환)
         SpawnTestUnits();
 
+        //라운드 코루틴을 등록
+        owner.round = owner.gameObject.AddComponent<TurnOrderController>().Round();
+        
+        //한프레임 쉰다
         yield return null;
 
         // 현재 상태를 SelectUnitState로 변경한다.

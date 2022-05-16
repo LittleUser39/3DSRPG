@@ -11,10 +11,10 @@ public class MinValueModifier : ValueModifier
         this.min = min;
     }
  
-    public override float Modify(float value)
+    public override float Modify(float formValue,float toValue)
     {
         // 두 개의 값중 작은 값을 반환
-        return Mathf.Min(min, value);
+        return Mathf.Min(min, toValue);
     }
 }
 

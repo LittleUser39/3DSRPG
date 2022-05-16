@@ -31,7 +31,7 @@ public class CommandSelectionState : BaseAbilityMenuState
             owner.ChangeState<ExploreState>();
         }
     }
-
+    //버튼을 선택했을때 상태 변경
     protected override void Confirm()
     {
         switch(AbilityMenuPanelController.selection)
@@ -43,7 +43,7 @@ public class CommandSelectionState : BaseAbilityMenuState
                 owner.ChangeState<CategorySelectionState>();
                 break;
             case 2://Wait
-                owner.ChangeState<SelectUnitState>();
+                owner.ChangeState<EndFacingState>();
                 break;
         }
     }

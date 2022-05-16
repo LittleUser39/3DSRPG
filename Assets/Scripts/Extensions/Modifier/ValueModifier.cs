@@ -10,5 +10,5 @@ public abstract class ValueModifier : Modifier
     //생성자 호출시 매개변수로 받은 sortorder를 부모의 생성자 매개변수로 보낸다는 의미
     public ValueModifier(int sortOrder) : base(sortOrder) { }
     //추상화 메소드 이 클래스를 상속받은 자식클래스에서 반드시 선언해줘야하는 함수
-    public abstract float Modify(float value);
+    public abstract float Modify(float value,float toValue);
 }

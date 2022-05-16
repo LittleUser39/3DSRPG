@@ -9,9 +9,9 @@ public class MaxValueModifier : ValueModifier
     public MaxValueModifier(int sortOrder,float max):base(sortOrder)
     { this.max = max; }
 
-    public override float Modify(float value)
+    public override float Modify(float fromValue,float toValue)
     {
         //두개의 값 중 큰값을 반환
-        return Mathf.Max(value, max);
+        return Mathf.Max(fromValue, max);
     }
 }

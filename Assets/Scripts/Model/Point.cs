@@ -1,5 +1,6 @@
 ﻿//3D 타일의 좌표를 가져옴
 //포인트 구조체
+using UnityEngine;
 
 [System.Serializable]
 public struct Point
@@ -55,6 +56,10 @@ public struct Point
     public override string ToString()
     {
         return string.Format("({0},{1})", x, y);
+    }
+    public static implicit operator Vector2(Point p)
+    {
+        return new Vector2(p.x, p.y);
     }
 
 }

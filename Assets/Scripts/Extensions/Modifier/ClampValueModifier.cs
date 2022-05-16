@@ -15,8 +15,8 @@ public class ClampValueModifier : ValueModifier
 
     //value가 min또는 max 범위를 넘어가지 않게 함
 
-    public override float Modify(float value)
+    public override float Modify(float fromValue,float toValue)
     {
-        return Mathf.Clamp(value, min, max);
+        return Mathf.Clamp(toValue, min, max);
     }
 }

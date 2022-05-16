@@ -10,10 +10,10 @@ public class MultValueModifier : ValueModifier
     {
         this.toMultiply = toMultiply;
     }
-    public override float Modify(float value)
+    public override float Modify(float fromValue,float toValue)
     {
         // 두개의 값을 곱한다.
-        return value * toMultiply;
+        return toValue * toMultiply;
     }
 }
 

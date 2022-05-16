@@ -62,7 +62,10 @@ public class StatPanelController : MonoBehaviour
         Panel.Position target = obj.panel[pos];
         if(obj.panel.CurrentPosition!=target)
         {
-            t.easingControl.Stop();
+            if(t!=null&&t.easingControl!=null)
+            {
+             t.easingControl.Stop();
+            }
         }
         t = obj.panel.SetPosition(pos, true);
         t.easingControl.duration = 0.5f;

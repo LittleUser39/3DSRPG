@@ -6,7 +6,8 @@ public class Turn
 {
     //이번 턴에 움직이는 대상
     public Unit actor;
-
+    //타겟리스트를 저장하는 변수
+    public List<Tile> targets;
     //이동,공격 진행 여부
     public bool hasUnitMoved;
     public bool hasUnitActed;
@@ -14,6 +15,8 @@ public class Turn
     //최종적으로 이동을 완료했는지 체크하는 변수
     public bool lockMove;
 
+    //능력 메뉴를 통해 어떤능려깅 선택되었는지 참조
+    public GameObject ability;
     //시작 타일
     Tile startTile;
     //시작 방향
