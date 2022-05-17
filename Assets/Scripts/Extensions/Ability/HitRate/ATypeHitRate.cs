@@ -4,18 +4,19 @@ using UnityEngine;
 
 public class ATypeHitRate : HitRate
 {
-    public override int Calculate(Unit attacker, Unit target)
+    public override int Calculate(Tile target)
     {
+        Unit defender = target.content.GetComponent<Unit>();
         //회피 할 수 없는 공격(최종 회피력 0)
-        if (AutomaticHit(attacker, target)) return Final(0);
+        if (AutomaticHit(defender)) return Final(0);
         //무조건 회피되는 공격(최종 회피력 100)
-        if (AutomaticMiss(attacker, target)) return Final(100);
+        if (AutomaticMiss(defender)) return Final(100);
         //타겟의 회피능력치 참조
-        int evade = GetEvade(target);
+        int evade = GetEvade(defender);
         //타겟과 공격자의 방향에 따라 타겟의 회피 능력치 적용
-        evade = AdjustForRelativeFacing(attacker, target, evade);
+        evade = AdjustForRelativeFacing(defender, evade);
         //공격자,타겟 그리고 타겟의 능력치로 회피력을 구함
-        evade = AdjustForStatusEffects(attacker, target, evade);
+        evade = AdjustForStatusEffects(defender, evade);
         //타겟의 최종 회피력을 5와95 범위를 벗어나지 않는다.
         evade = Mathf.Clamp(evade, 5, 95);
         //100-타겟의 최종 회피력
@@ -29,7 +30,7 @@ public class ATypeHitRate : HitRate
 
         return Mathf.Clamp(stats[StateTypes.EVD], 0, 100);
     }
-    int AdjustForRelativeFacing(Unit attacker, Unit target, int rate)
+    int AdjustForRelativeFacing(Unit target, int rate)
     {
         switch(attacker.GetFacing(target))
         {

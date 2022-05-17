@@ -4,19 +4,20 @@ using UnityEngine;
 
 public class STypeHitRate : HitRate
 {
-    public override int Calculate(Unit attacker, Unit target)
+    public override int Calculate(Tile target)
     {
-        if (AutomaticMiss(attacker, target)) return Final(100);
-        if (AutomaticHit(attacker, target)) return Final(0);
+        Unit defender = target.content.GetComponent<Unit>();
+        if (AutomaticMiss(defender)) return Final(100);
+        if (AutomaticHit(defender)) return Final(0);
 
         // 타겟의 저항능력치 참조
-        int res = GetResistance(target);
+        int res = GetResistance(defender);
 
         // 공격자, 타겟 그리고 타겟의 능력치로 저항력을 구한다.
-        res = AdjustForStatusEffects(attacker, target, res);
+        res = AdjustForStatusEffects(defender, res);
 
         // 타겟과 공격자의 방향에 따라 타겟의 저항 능력치 적용
-        res = AdjustForRelativeFacing(attacker, target, res);
+        res = AdjustForRelativeFacing(defender, res);
 
         // 타겟의 최종 저항능력치는 0 또는 100을 벗어날 수 없다.
         res = Mathf.Clamp(res, 0, 100);
@@ -31,7 +32,7 @@ public class STypeHitRate : HitRate
         // 타겟의 저항능력 반환
         return s[StateTypes.RES];
     }
-    int AdjustForRelativeFacing(Unit attacker, Unit target, int rate)
+    int AdjustForRelativeFacing(Unit target, int rate)
     {
         switch (attacker.GetFacing(target))
         {

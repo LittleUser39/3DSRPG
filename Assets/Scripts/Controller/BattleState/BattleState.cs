@@ -16,6 +16,7 @@ public abstract class BattleState : State
     public Transform tileselection { get { return owner.tileselection; } }
     public Point pos { get { return owner.pos; } set { owner.pos = value; } }
     public StatPanelController StatPanelController { get { return owner.StatPanelController; } }
+    public HitSuccessIndicator HitSuccessIndicator { get { return owner.HitSuccessIndicator; } }
     protected virtual void Awake()
     {
         owner = GetComponent<BattleController>();

@@ -32,6 +32,9 @@ public class BattleController : StateMachine
 
     //턴의 프레임을 관리하는 코루틴
     public IEnumerator round;
+    
+    //공격 맞을 확률을 보여주는 UI
+    public HitSuccessIndicator HitSuccessIndicator;
     private void Start()
     {
         ChangeState<InitBattleState>();

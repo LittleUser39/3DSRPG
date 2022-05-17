@@ -16,7 +16,7 @@ public class Turn
     public bool lockMove;
 
     //능력 메뉴를 통해 어떤능려깅 선택되었는지 참조
-    public GameObject ability;
+    public Ability ability;
     //시작 타일
     Tile startTile;
     //시작 방향

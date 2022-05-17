@@ -9,6 +9,7 @@ using UnityEngine;
 public class ActionSelectionState : BaseAbilityMenuState
 {
     public static int category;
+    AbilityCatalog catalog;
 
     //해당 카테고리의 공격 종류들
     string[] whiteMagicOption = new string[]{"Cure", "Raise", "Holy"};
@@ -28,29 +29,63 @@ public class ActionSelectionState : BaseAbilityMenuState
     }
     protected override void LoadMenu()
     {
-        if (menuOption == null) menuOption = new List<string>(3);
+        //해당 턴의 대상의 능력 목록을 가져옴
+        catalog = turn.actor.GetComponentInChildren<AbilityCatalog>();
+        //게임오브젝트에 카테고리(능력 종류)를 가져와서 저장함
+        GameObject container = catalog.GetCategory(category);
+        menuTitle = container.name;
 
-        //해당 카테고리에 따라 공격 종류를 세팅
-        if(category==0)
+        int count = catalog.AbilityCount(container);
+        if (menuOption == null)
         {
-            menuTitle = "White Magic";
-            SetOptions(whiteMagicOption);
+            menuOption = new List<string>(3);
         }
         else
         {
-            menuTitle = "Black Magic";
-            SetOptions(BlackMagicOption);
+            menuOption.Clear();
         }
+        
+        bool[] locks = new bool[count];
+        for(int i=0;i<count;++i)
+        {
+            //카테고리(스킬 종류)에 있는 능력을 가져와 저장
+            Ability ability = catalog.GetAbility(category, i);
+            //능력의 비용을 컴포넌트를 참고해서 저장
+            AbilityMagicCost cost = ability.GetComponent<AbilityMagicCost>();
+            if (cost)
+                menuOption.Add(string.Format("{0}:{1}", ability.name, cost.amount));
+            else
+                menuOption.Add(ability.name);
+            locks[i] = !ability.CanPerform();
+        }
+
+        ////해당 카테고리에 따라 공격 종류를 세팅
+        //if (category == 0)
+        //{
+        //    menuTitle = "White Magic";
+        //    SetOptions(whiteMagicOption);
+        //}
+        //else
+        //{
+        //    menuTitle = "Black Magic";
+        //    SetOptions(BlackMagicOption);
+        //}
         AbilityMenuPanelController.Show(menuTitle, menuOption);
+        for (int i = 0; i < count; ++i)
+            AbilityMenuPanelController.SetLocked(i, locks[i]);
     }
 
     //버튼선택
     protected override void Confirm()
     {
-        turn.hasUnitActed = true;
-        if (turn.hasUnitMoved)
-            turn.lockMove = true;
-        owner.ChangeState<CommandSelectionState>();
+        //해당 턴의 기술을 선택하면
+        //발동자의 상태를 기술을 사용하는 상태로 변경
+        turn.ability = catalog.GetAbility(category, AbilityMenuPanelController.selection);
+        owner.ChangeState<AbilityTargetState>();
+        //turn.hasUnitActed = true;
+        //if (turn.hasUnitMoved)
+        //    turn.lockMove = true;
+        //owner.ChangeState<CommandSelectionState>();
     }
 
     //취소하기

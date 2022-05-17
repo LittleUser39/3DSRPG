@@ -77,6 +77,9 @@ public class InitBattleState : BattleState
 
             //이동 방법 걷기
             instance.AddComponent<WalkMoveMent>();
+            //초기화시 체력과 마나 회복
+            instance.AddComponent<Health>();
+            instance.AddComponent<Mana>();
             units.Add(unit);
         }
     }

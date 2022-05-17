@@ -19,33 +19,55 @@ public class CategorySelectionState : BaseAbilityMenuState
     }
     protected override void LoadMenu()
     {
+        //메뉴 옵션이 null이 면
         if(menuOption==null)
         {
-            menuTitle = "Action";
-            menuOption = new List<string>(3);
-            //공격 종류
-            menuOption.Add("Attack");
-            menuOption.Add("White Magic");
-            menuOption.Add("Black Magic");
+            //메뉴 옵션에 새로운 문자열 리스트 생성
+            menuOption = new List<string>();
         }
+        else
+        {
+            menuOption.Clear();
+        }
+        //제목은 action
+        //Attack 옵션 추가
+        menuTitle = "ACtion";
+        menuOption.Add("Attack");
+
+        //능력 목록을 해당 턴의 캐릭터 컴포넌트 참조
+        //능력 전체를 이름으로 옵션추가
+        AbilityCatalog catalog = turn.actor.GetComponentInChildren<AbilityCatalog>();
+        for(int i=0; i< catalog.CategoryCount();++i)
+        {
+            menuOption.Add(catalog.GetCategory(i).name);
+        }
+        //능력 선택하는 UI 보이기
         AbilityMenuPanelController.Show(menuTitle, menuOption);
     }
 
     protected override void Confirm()
     {
-        //버튼을 선택했을 때의 처리
-        switch(AbilityMenuPanelController.selection)
-        {
-            case 0:
-                Attack();
-                break;
-            case 1:
-                SetCategory(0);
-                break;
-            case 2:
-                SetCategory(1);
-                break;
-        }
+        ////버튼을 선택했을 때의 처리
+        //switch(AbilityMenuPanelController.selection)
+        //{
+        //    case 0:
+        //        Attack();
+        //        break;
+        //    case 1:
+        //        SetCategory(0);
+        //        break;
+        //    case 2:
+        //        SetCategory(1);
+        //        break;
+        //}
+
+        //변경
+        //첫번째 버튼을 선택하면 공격
+        //아니면 능력
+        if (AbilityMenuPanelController.selection == 0)
+            Attack();
+        else
+            SetCategory(AbilityMenuPanelController.selection - 1);
     }
 
     protected override void Cancel()
@@ -55,7 +77,8 @@ public class CategorySelectionState : BaseAbilityMenuState
 
     void Attack()
     {
-        turn.ability = turn.actor.GetComponentInChildren<AbilityRange>().gameObject;
+        //turn.ability = turn.actor.GetComponentInChildren<AbilityRange>().gameObject;
+        turn.ability = turn.actor.GetComponentInChildren<Ability>();
         owner.ChangeState<AbilityTargetState>();
 
         //abilitytargetstate으로 이동
