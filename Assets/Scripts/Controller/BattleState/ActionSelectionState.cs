@@ -19,13 +19,13 @@ public class ActionSelectionState : BaseAbilityMenuState
     {
         //해당 상태가 되면 초상화 정보를 출력
         base.Enter();
-        StatPanelController.ShowPrimary(turn.actor.gameObject);
+        statPanelController.ShowPrimary(turn.actor.gameObject);
     }
     public override void Exit()
     {
         base.Exit();
         //상태가 해제되면 초상화 UI를 숨기기
-        StatPanelController.HidePrimary();
+        statPanelController.HidePrimary();
     }
     protected override void LoadMenu()
     {
@@ -70,9 +70,9 @@ public class ActionSelectionState : BaseAbilityMenuState
         //    menuTitle = "Black Magic";
         //    SetOptions(BlackMagicOption);
         //}
-        AbilityMenuPanelController.Show(menuTitle, menuOption);
+        abilityMenuPanelController.Show(menuTitle, menuOption);
         for (int i = 0; i < count; ++i)
-            AbilityMenuPanelController.SetLocked(i, locks[i]);
+            abilityMenuPanelController.SetLocked(i, locks[i]);
     }
 
     //버튼선택
@@ -80,7 +80,7 @@ public class ActionSelectionState : BaseAbilityMenuState
     {
         //해당 턴의 기술을 선택하면
         //발동자의 상태를 기술을 사용하는 상태로 변경
-        turn.ability = catalog.GetAbility(category, AbilityMenuPanelController.selection);
+        turn.ability = catalog.GetAbility(category, abilityMenuPanelController.selection);
         owner.ChangeState<AbilityTargetState>();
         //turn.hasUnitActed = true;
         //if (turn.hasUnitMoved)

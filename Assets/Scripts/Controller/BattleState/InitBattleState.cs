@@ -35,53 +35,45 @@ public class InitBattleState : BattleState
         owner.ChangeState<CutSceneState>();
     }
 
-// 임시 함수
+    //테스트 유닛 생성 함수
     void SpawnTestUnits()
     {
-        string[] jobs = new string[] { "Rogue", "Warrior", "Wizard" };
-
-        for(int i=0;i<jobs.Length;++i)
+        //string 배열을 만들어서 unitrecipe의 이름을 배열에 저장
+        string[] recipes = new string[]
         {
-            GameObject instance = Instantiate(owner.heroPrefab) as GameObject;
+            "Warrior",
+            "Rogue",
+            "Wizard",
+            "Enemy Warrior",
+            "Enemy Rogue",
+            "Enemy Wizard"
+        };
+        List<Tile> locations = new List<Tile>(board.tiles.Values);
+        for(int i=0;i<recipes.Length;++i)
+        {
+            //랜덤으로 레벨값 생성
+            //일단 1렙으로 설정
+            int level = 1;//UnityEngine.Random.Range(9, 12);
+            //팩토리에서 이름에 따라 유닛생성
+            GameObject instance = UnitFactory.Create(recipes[i], level);
 
-            //heroprefab에 stats 컴포넌트 추가
-            Stats s = instance.AddComponent<Stats>();
+            //랜덤값으로 생성될 타일 위치 저장
+            int random = UnityEngine.Random.Range(0, locations.Count);
+            Tile randomTile = locations[random];
+            locations.RemoveAt(random);
 
-            //레벨 1
-            s[StateTypes.LVL] = 1;
-
-            //Resources/Jobs 폴더에 있는 프리팹을 로드
-            GameObject jobPrefab = Resources.Load<GameObject>("Jobs/" + jobs[i]);
-
-            //Hierarchy 뷰에 생성
-            GameObject jobInstance = Instantiate(jobPrefab) as GameObject;
-
-            //heroPrefab의 자식오브젝트로 생성
-            jobInstance.transform.SetParent(instance.transform);
-
-            //job에 job컴포넌트 가져옴
-            Job job = jobInstance.GetComponent<Job>();
-            
-            //job 이라는 직업 생성 초기능력치 설정됨
-            job.Empoly();
-
-            //성장형 능력치 설정됨
-            job.LoadDefaultStats();
-            
-            //시작위치(스폰위치)
-            //todo 나중에 이거 바꿔주면 될듯
-            Point p = new Point((int)levelData.tiles[i].x, (int)levelData.tiles[i].z);
+            //유닛을 랜덤값 타일에 배치
             Unit unit = instance.GetComponent<Unit>();
-            unit.Place(board.GetTile(p));
+            unit.Place(randomTile);
+            //유닛의 바라보는 방향 랜덤으로 생성
+            unit.dir = (Directions)UnityEngine.Random.Range(0, 4);
             unit.Match();
 
-            //이동 방법 걷기
-            instance.AddComponent<WalkMoveMent>();
-            //초기화시 체력과 마나 회복
-            instance.AddComponent<Health>();
-            instance.AddComponent<Mana>();
+            //유닛을 추가
             units.Add(unit);
         }
+        //첫번째 유닛의 위치를 선택
+        SelectTile(units[0].tile.pos);
     }
 }
 

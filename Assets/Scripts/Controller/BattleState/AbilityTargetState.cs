@@ -20,14 +20,15 @@ public class AbilityTargetState : BattleState
         SelectTiles();
 
         //공격자 능력치 정보 ui 출력
-        StatPanelController.ShowPrimary(turn.actor.gameObject);
+        statPanelController.ShowPrimary(turn.actor.gameObject);
     
         //방향 전환이 가능하다면
         if(ar.directionOriented)
         {
             //피격자 능력치 정보 ui출력
-            RefreshPrimaryStatPanel(pos);
+            RefreshSecondaryStatPanel(pos);
         }
+
     }
     //ability targetstate 상태가 종료될때 호출
     public override void Exit()
@@ -37,8 +38,8 @@ public class AbilityTargetState : BattleState
         board.DeSelectTiles(tiles);
 
         //유닛 능력치 정보 ui 숨기기
-        StatPanelController.HidePrimary();
-        StatPanelController.HideSecondary();
+        statPanelController.HidePrimary();
+        statPanelController.HideSecondary();
     }
     protected override void OnMove(object sender, InfoEventArgs<Point> e)
     {

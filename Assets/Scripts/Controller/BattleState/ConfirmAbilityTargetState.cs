@@ -37,8 +37,8 @@ public class ConfirmAbilityTargetState : BattleState
         //선택된 타일 해제
         board.DeSelectTiles(tiles);
         //타겟과 나의 능력UI 해제
-        StatPanelController.HidePrimary();
-        StatPanelController.HideSecondary();
+        statPanelController.HidePrimary();
+        statPanelController.HideSecondary();
 
         HitSuccessIndicator.Hide();
     }
@@ -46,7 +46,7 @@ public class ConfirmAbilityTargetState : BattleState
     protected override void OnMove(object sender, InfoEventArgs<Point> e)
     {
         //방향키로 타겟 변경 가능
-        if(e.info.y>0||e.info.x>0)
+        if(e.info.y > 0 || e.info.x > 0)
         {
             SetTarget(index + 1);
         }
@@ -73,27 +73,15 @@ public class ConfirmAbilityTargetState : BattleState
     {
         turn.targets = new List<Tile>();
 
-        AbilityEffectTarget[] targets = turn.ability.GetComponentsInChildren<AbilityEffectTarget>();
-
         for(int i=0;i<tiles.Count;++i)
         {
-            if(IsTarget(tiles[i],targets))
+            if(turn.ability.IsTarget(tiles[i]))
             {
                 turn.targets.Add(tiles[i]);
             }
         }
     }
-    bool IsTarget(Tile tile, AbilityEffectTarget[] targets)
-    {
-        for(int i=0;i<targets.Length;++i)
-        {
-            if(targets[i].IsTarget(tile))
-            {
-                return true;
-            }
-        }
-        return false;
-    }
+  
     void SetTarget(int target)
     {
         index = target;
@@ -108,7 +96,7 @@ public class ConfirmAbilityTargetState : BattleState
         }
         if(turn.targets.Count>0)
         {
-            RefreshPrimaryStatPanel(turn.targets[index].pos);
+            RefreshSecondaryStatPanel(turn.targets[index].pos);
             UpdateHitSuccessIndicator();
         }
     }
@@ -116,18 +104,20 @@ public class ConfirmAbilityTargetState : BattleState
     {
         //타겟의 최종 능력치
         int chance = 0;
-        //임의로 50
+        //0
         int amount = 0;
         Tile target = turn.targets[index];
-
-        for (int i = 0; i < targetsers.Length; ++i)
+        
+        Transform obj = turn.ability.transform;
+        for (int i = 0; i < obj.childCount; ++i)
         {
-            if (targetsers[i].IsTarget(target))
+            AbilityEffectTarget targeter = obj.GetChild(i).GetComponent<AbilityEffectTarget>();
+            if (targeter.IsTarget(target))
             {
-                HitRate hitRate = targetsers[i].GetComponent<HitRate>();
-                targetsers[i].IsTarget(target);
+                HitRate hitRate = targeter.GetComponent<HitRate>();
+                chance = hitRate.Calculate(target);
 
-                BaseAbilityEffect effect = targetsers[i].GetComponent<BaseAbilityEffect>();
+                BaseAbilityEffect effect = targeter.GetComponent<BaseAbilityEffect>();
                 amount = effect.Predict(target);
                 break;
             }

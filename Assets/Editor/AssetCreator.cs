@@ -24,6 +24,7 @@ public class YourClassAsset
         //유닛 레시피 생성
         ScriptableObjectUtility.CreateAsset<UnitRecipe>();
     }
+    
     [MenuItem("Assets/Create/Ability Catalog Recipe")]
     public static void CreateAbilityCatalogRecipe()
     {

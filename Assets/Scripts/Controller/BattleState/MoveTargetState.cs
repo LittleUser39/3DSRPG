@@ -30,7 +30,7 @@ public class MoveTargetState : BattleState
         //변경된 타일들의 색상을 원래대로 변경
         board.DeSelectTiles(tiles);
         tiles = null;
-        StatPanelController.HidePrimary();
+        statPanelController.HidePrimary();
     }
 
     protected override void OnMove(object sender, InfoEventArgs<Point> e)

@@ -6,7 +6,7 @@ public abstract class BattleState : State
 {
     protected BattleController owner;
     //battlecontroller에 전역변수들을 참조
-    public AbilityMenuPanelController AbilityMenuPanelController { get { return owner.abilityMenuPanelController; } }
+    public AbilityMenuPanelController abilityMenuPanelController { get { return owner.abilityMenuPanelController; } }
     public Turn turn { get { return owner.turn; } }
     public List<Unit> units { get { return owner.units; } }
     //아래 변수들은 battlecontroller가 가지고 있는 변수
@@ -15,7 +15,7 @@ public abstract class BattleState : State
     public LevelData levelData { get { return owner.leveldata; } }
     public Transform tileselection { get { return owner.tileselection; } }
     public Point pos { get { return owner.pos; } set { owner.pos = value; } }
-    public StatPanelController StatPanelController { get { return owner.StatPanelController; } }
+    public StatPanelController statPanelController { get { return owner.StatPanelController; } }
     public HitSuccessIndicator HitSuccessIndicator { get { return owner.HitSuccessIndicator; } }
     protected virtual void Awake()
     {
@@ -71,12 +71,12 @@ public abstract class BattleState : State
         if(target!=null)
         {
             //대상의 정보를 표시
-            StatPanelController.ShowPrimary(target.gameObject);
+            statPanelController.ShowPrimary(target.gameObject);
         }
         else
         {
             //해당 UI 숨기기
-            StatPanelController.HidePrimary();
+            statPanelController.HidePrimary();
         }
     }
 
@@ -86,12 +86,12 @@ public abstract class BattleState : State
         if (target != null)
         {
             //대상의 정보를 표시
-            StatPanelController.ShowSecondary(target.gameObject);
+            statPanelController.ShowSecondary(target.gameObject);
         }
         else
         {
             //해당 UI 숨기기
-            StatPanelController.HideSecondary();
+            statPanelController.HideSecondary();
         }
     }
 }

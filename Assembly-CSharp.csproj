@@ -121,6 +121,7 @@
     <Compile Include="Assets\Scripts\Extensions\Modifier\ValueModifier.cs" />
     <Compile Include="Assets\Scripts\Extensions\ValueChangeException.cs" />
     <Compile Include="Assets\Scripts\Factory\AbilityCatalogRecipe.cs" />
+    <Compile Include="Assets\Scripts\Factory\UnitFactory.cs" />
     <Compile Include="Assets\Scripts\Factory\UnitRecipe.cs" />
     <Compile Include="Assets\Scripts\InputTest.cs" />
     <Compile Include="Assets\Scripts\Model\ConversationData.cs" />
@@ -190,9 +191,11 @@
     <Compile Include="Assets\Scripts\View Model Component\Poolable.cs" />
     <Compile Include="Assets\Scripts\View Model Component\StatPanel.cs" />
     <Compile Include="Assets\Scripts\View Model Component\Status\Condition\DurationStatusCondition.cs" />
+    <Compile Include="Assets\Scripts\View Model Component\Status\Condition\StatComparisonCondition.cs" />
     <Compile Include="Assets\Scripts\View Model Component\Status\Condition\StatusCondition.cs" />
     <Compile Include="Assets\Scripts\View Model Component\Status\Effects\BlindStatusEffect.cs" />
     <Compile Include="Assets\Scripts\View Model Component\Status\Effects\HasteStatusEffect.cs" />
+    <Compile Include="Assets\Scripts\View Model Component\Status\Effects\KnockOutStatusEffect.cs" />
     <Compile Include="Assets\Scripts\View Model Component\Status\Effects\PoisonStatusEffect.cs" />
     <Compile Include="Assets\Scripts\View Model Component\Status\Effects\SlowStatusEffect.cs" />
     <Compile Include="Assets\Scripts\View Model Component\Status\Effects\StatusEffect.cs" />

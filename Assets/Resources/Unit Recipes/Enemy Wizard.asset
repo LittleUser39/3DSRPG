@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa75e68c25306de42abcbed33f9ad949, type: 3}
+  m_Name: Enemy Wizard
+  m_EditorClassIdentifier: 
+  modle: Monster
+  job: Wizard
+  attack: Common/Attack
+  abilityCatalog: EnemyWizard
+  locomotions: 2
+  alliances: 4

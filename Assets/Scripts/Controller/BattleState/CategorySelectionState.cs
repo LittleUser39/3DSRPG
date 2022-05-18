@@ -9,13 +9,13 @@ public class CategorySelectionState : BaseAbilityMenuState
     {
         //해당 상태가 되면 초상화 정보를 출력
         base.Enter();
-        StatPanelController.ShowPrimary(turn.actor.gameObject);
+        statPanelController.ShowPrimary(turn.actor.gameObject);
     }
     public override void Exit()
     {
         base.Exit();
         //상태가 해제되면 초상화 UI를 숨기기
-        StatPanelController.HidePrimary();
+        statPanelController.HidePrimary();
     }
     protected override void LoadMenu()
     {
@@ -42,7 +42,7 @@ public class CategorySelectionState : BaseAbilityMenuState
             menuOption.Add(catalog.GetCategory(i).name);
         }
         //능력 선택하는 UI 보이기
-        AbilityMenuPanelController.Show(menuTitle, menuOption);
+        abilityMenuPanelController.Show(menuTitle, menuOption);
     }
 
     protected override void Confirm()
@@ -64,17 +64,17 @@ public class CategorySelectionState : BaseAbilityMenuState
         //변경
         //첫번째 버튼을 선택하면 공격
         //아니면 능력
-        if (AbilityMenuPanelController.selection == 0)
+        if (abilityMenuPanelController.selection == 0)
             Attack();
         else
-            SetCategory(AbilityMenuPanelController.selection - 1);
+            SetCategory(abilityMenuPanelController.selection - 1);
     }
 
     protected override void Cancel()
     {
         owner.ChangeState<CommandSelectionState>();
     }
-
+    //일반 공격을 했을때 처리
     void Attack()
     {
         //turn.ability = turn.actor.GetComponentInChildren<AbilityRange>().gameObject;

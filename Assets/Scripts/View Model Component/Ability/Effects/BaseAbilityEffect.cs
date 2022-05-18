@@ -34,7 +34,7 @@ public abstract class BaseAbilityEffect : MonoBehaviour
 
         this.PostNotification(notification, info);
 
-        mods.Sort();
+        mods.Sort(Compare);
 
         float value = startValue;
 
@@ -47,5 +47,9 @@ public abstract class BaseAbilityEffect : MonoBehaviour
         retValue = Mathf.Clamp(retValue, minDamage, maxDamage);
 
         return retValue;
+    }
+    int Compare(ValueModifier x,ValueModifier y)
+    {
+        return x.sortOrder.CompareTo(y.sortOrder);
     }
 }

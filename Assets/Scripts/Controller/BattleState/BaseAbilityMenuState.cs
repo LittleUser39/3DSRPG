@@ -22,7 +22,7 @@ public abstract class BaseAbilityMenuState : BattleState
         base.Exit();
 
         //상태가 해제되면 메뉴판 숨김
-        AbilityMenuPanelController.Hide();
+        abilityMenuPanelController.Hide();
     }
     protected override void OnFire(object Sender, InfoEventArgs<int> e)
     {
@@ -35,9 +35,9 @@ public abstract class BaseAbilityMenuState : BattleState
         //좌우 또는 상하로 메뉴판에 선택된 버튼을 변경
         //inputmanager에서 상화조우 입력에 따라 -1~1값을 e로 전달
         if (e.info.x > 0 || e.info.y < 0)
-            AbilityMenuPanelController.Next();
+            abilityMenuPanelController.Next();
         else
-            AbilityMenuPanelController.Previous();
+            abilityMenuPanelController.Previous();
     }
 
     //해당 함수들을 자식에서 정의 하기 위해 추상화 클래스로 구현

@@ -9,13 +9,13 @@ public class ExploreState : BattleState
     {
         //해당 상태가 되면 초상화 정보를 출력
         base.Enter();
-        StatPanelController.ShowPrimary(turn.actor.gameObject);
+        statPanelController.ShowPrimary(turn.actor.gameObject);
     }
     public override void Exit()
     {
         base.Exit();
         //상태가 해제되면 초상화 UI를 숨기기
-        StatPanelController.HidePrimary();
+        statPanelController.HidePrimary();
     }
     //메뉴창을 취소 했을때 변경되는 상태
     protected override void OnMove(object sender, InfoEventArgs<Point> e)
