@@ -73,6 +73,7 @@
     <Compile Include="Assets\Scripts\Common\State Machine\StateMachine.cs" />
     <Compile Include="Assets\Scripts\Common\UI\LayoutAnchor.cs" />
     <Compile Include="Assets\Scripts\Common\UI\Panel.cs" />
+    <Compile Include="Assets\Scripts\Controller\AutoStatusController.cs" />
     <Compile Include="Assets\Scripts\Controller\BattleState\AbilityTargetState.cs" />
     <Compile Include="Assets\Scripts\Controller\BattleState\ActionSelectionState.cs" />
     <Compile Include="Assets\Scripts\Controller\BattleState\BaseAbilityMenuState.cs" />
@@ -82,6 +83,7 @@
     <Compile Include="Assets\Scripts\Controller\BattleState\CommandSelectionState.cs" />
     <Compile Include="Assets\Scripts\Controller\BattleState\ConfirmAbilityTargetState.cs" />
     <Compile Include="Assets\Scripts\Controller\BattleState\CutSceneState.cs" />
+    <Compile Include="Assets\Scripts\Controller\BattleState\EndBattleState.cs" />
     <Compile Include="Assets\Scripts\Controller\BattleState\ExploreState.cs" />
     <Compile Include="Assets\Scripts\Controller\BattleState\InitBattleState.cs" />
     <Compile Include="Assets\Scripts\Controller\BattleState\MoveSequenceState.cs" />
@@ -95,6 +97,9 @@
     <Compile Include="Assets\Scripts\Controller\InputController.cs" />
     <Compile Include="Assets\Scripts\Controller\StatPanelController.cs" />
     <Compile Include="Assets\Scripts\Controller\TurnOrderController.cs" />
+    <Compile Include="Assets\Scripts\Controller\VictoryCondition\BaseVictoryCondition.cs" />
+    <Compile Include="Assets\Scripts\Controller\VictoryCondition\DefeatAllEnemiesVictoryCondition.cs" />
+    <Compile Include="Assets\Scripts\Controller\VictoryCondition\DefeatTargetVictoryCondition.cs" />
     <Compile Include="Assets\Scripts\Enum\Alliances.cs" />
     <Compile Include="Assets\Scripts\Enum\Directions.cs" />
     <Compile Include="Assets\Scripts\Enum\EquipSlots.cs" />
@@ -176,6 +181,7 @@
     <Compile Include="Assets\Scripts\View Model Component\Board.cs" />
     <Compile Include="Assets\Scripts\View Model Component\CameraRig.cs" />
     <Compile Include="Assets\Scripts\View Model Component\ConversationPanel.cs" />
+    <Compile Include="Assets\Scripts\View Model Component\FacingIndicator.cs" />
     <Compile Include="Assets\Scripts\View Model Component\Features\AddPoisonFeature.cs" />
     <Compile Include="Assets\Scripts\View Model Component\Features\AddStatusFeature.cs" />
     <Compile Include="Assets\Scripts\View Model Component\Features\Consumable.cs" />

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //능력 메뉴에서 공격을 선택하면 변경되는 상태
+//스킬을 선택했을때도 나옴 
+//능력을 쓸 타겟을 정하는 상태
 public class AbilityTargetState : BattleState
 {
     List<Tile> tiles;
@@ -52,7 +54,7 @@ public class AbilityTargetState : BattleState
         else
         {
             //선택된 타일 인디게이터(게임오브젝트)의 위치를 변경
-            SelectTile(e.info+pos);
+            SelectTile(e.info + pos);
             //타겟의 능력ui를 갱신
             RefreshSecondaryStatPanel(pos);
         }

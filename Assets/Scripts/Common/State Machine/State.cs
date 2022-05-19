@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-//다른 클래스에서 상속받기 위해 만든 클래스 골격같은 졵재로 추상화 클래스 이다.
+//다른 클래스에서 상속받기 위해 만든 클래스 골격같은 존재로 추상화 클래스 이다.
 public abstract class State : MonoBehaviour
 {
     //상태가 시작시 호출

@@ -20,7 +20,7 @@ public class CategorySelectionState : BaseAbilityMenuState
     protected override void LoadMenu()
     {
         //메뉴 옵션이 null이 면
-        if(menuOption==null)
+        if (menuOption == null)
         {
             //메뉴 옵션에 새로운 문자열 리스트 생성
             menuOption = new List<string>();
@@ -37,7 +37,7 @@ public class CategorySelectionState : BaseAbilityMenuState
         //능력 목록을 해당 턴의 캐릭터 컴포넌트 참조
         //능력 전체를 이름으로 옵션추가
         AbilityCatalog catalog = turn.actor.GetComponentInChildren<AbilityCatalog>();
-        for(int i=0; i< catalog.CategoryCount();++i)
+        for (int i = 0; i < catalog.CategoryCount(); ++i)
         {
             menuOption.Add(catalog.GetCategory(i).name);
         }
@@ -65,10 +65,13 @@ public class CategorySelectionState : BaseAbilityMenuState
         //첫번째 버튼을 선택하면 공격
         //아니면 능력
         if (abilityMenuPanelController.selection == 0)
+        {
             Attack();
+        }
         else
+        {     
             SetCategory(abilityMenuPanelController.selection - 1);
-    }
+    }   }
 
     protected override void Cancel()
     {

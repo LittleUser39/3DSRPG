@@ -59,7 +59,7 @@ public class ConfirmAbilityTargetState : BattleState
     {
         if(e.info==0)
         {
-            if(turn.targets.Count>0)
+            if(turn.targets.Count > 0)
             {
                 owner.ChangeState<PerformAbilityState>();
             }
@@ -82,6 +82,7 @@ public class ConfirmAbilityTargetState : BattleState
         }
     }
   
+    //타겟 설정
     void SetTarget(int target)
     {
         index = target;

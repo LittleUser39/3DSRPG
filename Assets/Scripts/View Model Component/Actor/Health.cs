@@ -7,7 +7,8 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     Stats stats;
-  public int HP
+    //체력과 최대 체력은 시트를 참조해서 설정
+    public int HP
     {
         get
         {
@@ -23,6 +24,8 @@ public class Health : MonoBehaviour
         get { return stats[StateTypes.MHP]; }
         set { stats[StateTypes.MHP]= value; }
     }
+    //최소 체력
+    public int minHP = 0;
     private void Awake()
     {
         stats = GetComponent<Stats>();
@@ -41,7 +44,7 @@ public class Health : MonoBehaviour
     void OnWillChangeHP(object sender,object args)
     {
         ValueChangeException vce = args as ValueChangeException;
-        vce.AddModifier(new ClampValueModifier(int.MaxValue, 0, stats[StateTypes.HP]));
+        vce.AddModifier(new ClampValueModifier(int.MaxValue, minHP, stats[StateTypes.HP]));
     }
     void OnWillChangeMHP(object sender,object args)
     {
@@ -49,6 +52,6 @@ public class Health : MonoBehaviour
         if (MHP > oldMHP)
             HP += MHP - oldMHP;
         else
-            HP = Mathf.Clamp(HP, 0, MHP);
+            HP = Mathf.Clamp(HP, minHP, MHP);
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //최종적으로 공격할 대상을 지정하면 변경되는 상태
+//공격할 대상을 지정하면 유닛이 행동하는 상태 클래스
 public class PerformAbilityState : BattleState
 {
     public override void Enter()
@@ -18,11 +19,18 @@ public class PerformAbilityState : BattleState
     }
     IEnumerator Animate()
     {
+        //todo 나중에 여기서 애니메이션 재생해야함,
         yield return null;
-
-        TempoaryAttackExample();
-
-        if(turn.hasUnitMoved)
+        ApplyAbility();
+        if(IsBattleOver())
+        {
+            owner.ChangeState<CutSceneState>();
+        }
+        else if(!UnitHasControl())
+        {
+            owner.ChangeState<SelectUnitState>();
+        }
+        else if(turn.hasUnitMoved)
         {
             owner.ChangeState<EndFacingState>();
         }
@@ -31,47 +39,37 @@ public class PerformAbilityState : BattleState
             owner.ChangeState<CommandSelectionState>();
         }
     }
-    void TempoaryAttackExample()
-    {
-        for(int i=0;i<turn.targets.Count;++i)
-        {
-            GameObject obj = turn.targets[i].content;
-
-            Stats stats = obj != null ? obj.GetComponent<Stats>() : null;
-        
-            if(stats!=null)
-            {
-                stats[StateTypes.HP] -= 50;
-                if(stats[StateTypes.HP]<=0)
-                {
-                    Debug.Log("죽음", obj);
-                }
-            }
-                        
-        }
-    }
+   
     void ApplyAbility()
     {
-        BaseAbilityEffect[] effects = turn.ability.GetComponentsInChildren<BaseAbilityEffect>();
-        for (int i = 0; i < turn.targets.Count; ++i)
-        {
-            Tile target = turn.targets[i];
-            for (int j = 0; j < effects.Length; ++j)
-            {
-                BaseAbilityEffect effect = effects[j];
-                AbilityEffectTarget targeter = effect.GetComponent<AbilityEffectTarget>();
-                if(targeter.IsTarget(target))
-                {
-                    HitRate rate = effect.GetComponent<HitRate>();
-                    int chance = rate.Calculate(target);
-                    if(UnityEngine.Random.Range(0,101)>chance)
-                    {
-                        //Miss
-                        continue;
-                    }
-                    effect.Apply(target);
-                }
-            }
-        }
+        //능력 확인시 ability 클래스로 이동해서 perform 함수 실행
+        turn.ability.Perform(turn.targets);
+        //변경전
+        //BaseAbilityEffect[] effects = turn.ability.GetComponentsInChildren<BaseAbilityEffect>();
+        //for (int i = 0; i < turn.targets.Count; ++i)
+        //{
+        //    Tile target = turn.targets[i];
+        //    for (int j = 0; j < effects.Length; ++j)
+        //    {
+        //        BaseAbilityEffect effect = effects[j];
+        //        AbilityEffectTarget targeter = effect.GetComponent<AbilityEffectTarget>();
+        //        if(targeter.IsTarget(target))
+        //        {
+        //            HitRate rate = effect.GetComponent<HitRate>();
+        //            int chance = rate.Calculate(target);
+        //            if(UnityEngine.Random.Range(0,101)>chance)
+        //            {
+        //                //Miss
+        //                continue;
+        //            }
+        //            effect.Apply(target);
+        //        }
+        //    }
+        //}
+    }
+    bool UnitHasControl()
+    {
+        //녹다운 하고있는 상태가 아닌경우
+        return turn.actor.GetComponentInChildren<KnockOutStatusEffect>() == null;
     }
 }

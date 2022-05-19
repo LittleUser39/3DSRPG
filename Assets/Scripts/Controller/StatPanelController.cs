@@ -20,11 +20,11 @@ public class StatPanelController : MonoBehaviour
 
     private void Start()
     {
-        if(primaryPanel.panel.CurrentPosition==null)
+        if (primaryPanel.panel.CurrentPosition == null)
         {
             primaryPanel.panel.SetPosition(HideKey, false);
         }
-        if(secondaryPanel.panel.CurrentPosition==null)
+        if (secondaryPanel.panel.CurrentPosition == null)
         {
             secondaryPanel.panel.SetPosition(HideKey, false);
         }
@@ -56,19 +56,20 @@ public class StatPanelController : MonoBehaviour
         MovePanel(secondaryPanel, HideKey, ref secondaryTransition);
     }
 
-    void MovePanel(StatPanel obj,string pos,ref Tweener t)
+    void MovePanel(StatPanel obj, string pos, ref Tweener t)
     {
         //UI를 표시하거나 감출때 애니메이션과 함께 처리
         Panel.Position target = obj.panel[pos];
-        if(obj.panel.CurrentPosition!=target)
+        if (obj.panel.CurrentPosition != target)
         {
-            if(t!=null&&t.easingControl!=null)
+            if (t != null)
             {
-             t.easingControl.Stop();
+                t.easingControl.Stop();
             }
+            t = obj.panel.SetPosition(pos, true);
+            t.easingControl.duration = 0.5f;
+            t.easingControl.equation = EasingEquations.EaseInOutQuad;
         }
-        t = obj.panel.SetPosition(pos, true);
-        t.easingControl.duration = 0.5f;
-        t.easingControl.equation = EasingEquations.EaseInOutQuad;
     }
 }
+

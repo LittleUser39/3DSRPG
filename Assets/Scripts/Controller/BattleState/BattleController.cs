@@ -4,16 +4,10 @@ using UnityEngine;
 
 public class BattleController : StateMachine
 {
-    //임시코드
-    public GameObject heroPrefab;
     public Tile currentTile { get { return board.GetTile(pos); } }
-    public StatPanelController StatPanelController;
-
-    //메뉴판 관리,턴정보,전체 유닛 담는 배열
-    public AbilityMenuPanelController abilityMenuPanelController;
     public Turn turn = new Turn();
     public List<Unit> units = new List<Unit>();
-
+  
     //메인 카메라 컴포넌트
     //카메라가 tileselection을 따라가게 
     public CameraRig cameraRig;
@@ -26,15 +20,25 @@ public class BattleController : StateMachine
 
     //선택된 타일의 인디게이터
     public Transform tileselection;
-
+    
     //tileselection의 좌표를 표시
     public Point pos;
-
+    
     //턴의 프레임을 관리하는 코루틴
     public IEnumerator round;
+   
+    //능력치 패널 관리
+    public StatPanelController StatPanelController;
+
+    //메뉴판 관리,턴정보,전체 유닛 담는 배열
+    public AbilityMenuPanelController abilityMenuPanelController;
     
     //공격 맞을 확률을 보여주는 UI
     public HitSuccessIndicator HitSuccessIndicator;
+
+    //유닛의 방향을 강조하는 오브젝트
+    public FacingIndicator facingIndicator;
+
     private void Start()
     {
         ChangeState<InitBattleState>();

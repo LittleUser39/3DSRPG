@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//장면에 들어갈때 대화가 나오는것 을 관리하는 클래스
 public class CutSceneState : BattleState
 {
     ConversationController conversationController;
@@ -11,20 +12,33 @@ public class CutSceneState : BattleState
     {
         base.Awake();
         conversationController = owner.GetComponentInChildren<ConversationController>();
-
-        data = Resources.Load<ConversationData>("Conversations/IntroScene");
-    }
-    protected override void OnDestroy()
-    {
-        base.OnDestroy();
-        if (data)
-            Resources.UnloadAsset(data);
     }
 
     public override void Enter()
     {
         base.Enter();
+        if (IsBattleOver())
+        {
+            if (DidPlayerWin())
+            {
+                data = Resources.Load<ConversationData>("Conversations/OutroSceneWin");
+            }
+            else
+            {
+                data = Resources.Load<ConversationData>("Conversations/OutroSceneLose");
+            }
+        }
+        else
+        {
+            data = Resources.Load<ConversationData>("Conversations/IntroScene");
+        }
         conversationController.Show(data);
+    }
+    public override void Exit()
+    {
+        base.Exit();
+        if (data)
+            Resources.UnloadAsset(data);
     }
     protected override void AddListeners()
     {
@@ -41,8 +55,17 @@ public class CutSceneState : BattleState
         base.OnFire(Sender, e);
         conversationController.Next();
     }
-    void OnCompleteConversation(object sender,System.EventArgs e)
+
+    //대화 상태가 종료되면 battleEndstate로 전환 하는 함수
+    void OnCompleteConversation(object sender, System.EventArgs e)
     {
-        owner.ChangeState<SelectUnitState>();
+        if (IsBattleOver())
+        {
+            owner.ChangeState<EndBattleState>();
+        }
+        else
+        {
+            owner.ChangeState<SelectUnitState>();
+        }
     }
 }

@@ -21,7 +21,6 @@ public abstract class BattleState : State
     {
         owner = GetComponent<BattleController>();
     }
-
     //inputcontroller의 moveevent와 fireevent 핸들러에 함수를 등록
     //addlisteners는 해당 state 상태로 변경시 호출
     protected override void AddListeners()
@@ -94,4 +93,17 @@ public abstract class BattleState : State
             statPanelController.HideSecondary();
         }
     }
+
+    //플레이어가 승리했는지 확인하는 함수
+    protected virtual bool DidPlayerWin()
+    {
+        return owner.GetComponent<BaseVictoryCondition>().Victor == Alliances.Hero;
+    }
+    //전투가 끝났는지 확인하는 함수(승패 상관없이)
+    //Victor이 None이면 안됨 None은 아무도 포함하지않는것
+    protected virtual bool IsBattleOver()
+    {
+        return owner.GetComponent<BaseVictoryCondition>().Victor != Alliances.None;
+    }
+
 }
