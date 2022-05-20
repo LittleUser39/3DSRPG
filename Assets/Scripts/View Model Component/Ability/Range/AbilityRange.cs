@@ -14,6 +14,9 @@ public abstract class AbilityRange : MonoBehaviour
     //디폴트는 false 불가
     public virtual bool directionOriented { get { return false; } }
 
+    //캐스터의 위치에 따라 달라진다
+    public virtual bool postitionOriented { get { return true; } }
+
     //공격하는 댜상의 정보를 관리
     protected Unit unit { get { return GetComponentInParent<Unit>(); } }
 

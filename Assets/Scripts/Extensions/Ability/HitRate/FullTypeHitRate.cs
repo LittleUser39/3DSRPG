@@ -5,6 +5,10 @@ using UnityEngine;
 //무적등의 상태가 아니면 무조건 적용되는 공격 스타일
 public class FullTypeHitRate : HitRate
 {
+    public override bool IsAngleBased
+    {
+        get { return false; }
+    }
     public override int Calculate(Tile target)
     {
         Unit defender = target.content.GetComponent<Unit>();

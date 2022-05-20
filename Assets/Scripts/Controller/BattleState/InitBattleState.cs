@@ -75,13 +75,13 @@ public class InitBattleState : BattleState
         {
             //랜덤으로 레벨값 생성
             //일단 1렙으로 설정
-            int level = 1;//UnityEngine.Random.Range(9, 12);
+            int level = UnityEngine.Random.Range(9, 12);
             
             //팩토리에서 이름에 따라 유닛생성
             GameObject instance = UnitFactory.Create(recipes[i], level);
             
             //팩토리에서 만든 유닛들을 유닛 컨테이너 오브젝트 자식으로 만듬
-            instance.transform.SetParent(unitContainer.transform);
+            //instance.transform.SetParent(unitContainer.transform);
             
             //랜덤값으로 생성될 타일 위치 저장
             int random = UnityEngine.Random.Range(0, locations.Count);

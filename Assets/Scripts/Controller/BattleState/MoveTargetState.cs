@@ -18,8 +18,8 @@ public class MoveTargetState : BattleState
         tiles = mover.GetTilesInRange(board);
         board.SelectTile(tiles);
         RefreshPrimaryStatPanel(pos);
-        //if (driver.Current == Drivers.Computer)
-          //  StartCoroutine(ComputerHighlightMoveTarget());
+        if (driver.Current == Drivers.Computer)
+           StartCoroutine(ComputerHighlightMoveTarget());
     }
 
     public override void Exit()
@@ -47,5 +47,35 @@ public class MoveTargetState : BattleState
         //현재 상태를 취소하면 메뉴판이 열려있는 명령상태로 돌아감
         else
             owner.ChangeState<CommandSelectionState>();
+    }
+
+    //AI가 이동하는 함수인듯?
+    IEnumerator ComputerHighlightMoveTarget()
+    {
+        Point cursorPos = pos;
+        while(cursorPos!=turn.plan.moveLocation)
+        {
+            if(cursorPos.x<turn.plan.moveLocation.x)
+            {
+                cursorPos.x++;
+            }
+            if (cursorPos.x >turn.plan.moveLocation.x)
+            {
+                cursorPos.x--;
+            }
+            if (cursorPos.y < turn.plan.moveLocation.y)
+            {
+                cursorPos.y++;
+            }
+            if (cursorPos.y > turn.plan.moveLocation.y)
+            {
+                cursorPos.y--;
+            }
+            SelectTile(cursorPos);
+            yield return new WaitForSeconds(0.25f);
+        }
+        yield return new WaitForSeconds(0.5f);
+        owner.ChangeState<MoveSequenceState>();
+
     }
 }

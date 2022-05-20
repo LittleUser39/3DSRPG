@@ -91,6 +91,12 @@ public class TurnOrderController : MonoBehaviour
     }
     bool CanTakeTurn(Unit target)
     {
+
+        Alliance a = target.GetComponentInChildren<Alliance>();
+        if (a.type == Alliances.Hero)
+        {
+            return false;
+        }
         //유닛의 CTR수치가 1000보다 크거나 같으면 exc.toggle에 true 저장
         //1000보다 작으면 exc.toggle에 false 저장
         BaseException exc = new BaseException(GetCounter(target) >= turnActivation);

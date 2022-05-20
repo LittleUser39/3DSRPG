@@ -13,9 +13,11 @@ public abstract class BaseAbilityMenuState : BattleState
     {
         base.Enter();
         SelectTile(turn.actor.tile.pos);
-
-        //메뉴판을 호출
-        LoadMenu();
+        if (driver.Current == Drivers.Human)
+        { 
+            //메뉴판을 호출
+            LoadMenu();
+        }
     }
     public override void Exit()
     {

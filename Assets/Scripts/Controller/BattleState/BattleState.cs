@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class BattleState : State
 {
     protected BattleController owner;
+    protected Driver driver;
     //battlecontroller에 전역변수들을 참조
     public AbilityMenuPanelController abilityMenuPanelController { get { return owner.abilityMenuPanelController; } }
     public Turn turn { get { return owner.turn; } }
@@ -17,6 +18,12 @@ public abstract class BattleState : State
     public Point pos { get { return owner.pos; } set { owner.pos = value; } }
     public StatPanelController statPanelController { get { return owner.StatPanelController; } }
     public HitSuccessIndicator HitSuccessIndicator { get { return owner.HitSuccessIndicator; } }
+
+    public override void Enter()
+    {
+        driver = (turn.actor != null) ? turn.actor.GetComponent<Driver>() : null;
+        base.Enter();
+    }
     protected virtual void Awake()
     {
         owner = GetComponent<BattleController>();
@@ -25,8 +32,11 @@ public abstract class BattleState : State
     //addlisteners는 해당 state 상태로 변경시 호출
     protected override void AddListeners()
     {
-        InputController.moveEvent += OnMove;
-        InputController.fireEvent += OnFire;
+        if (driver == null || driver.Current == Drivers.Human)
+        {
+            InputController.moveEvent += OnMove;
+            InputController.fireEvent += OnFire;
+        }
     }
 
     protected override void RemoveListeners()

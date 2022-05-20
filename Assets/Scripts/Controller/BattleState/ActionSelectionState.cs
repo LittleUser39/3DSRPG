@@ -38,7 +38,7 @@ public class ActionSelectionState : BaseAbilityMenuState
         int count = catalog.AbilityCount(container);
         if (menuOption == null)
         {
-            menuOption = new List<string>(3);
+            menuOption = new List<string>(count);
         }
         else
         {

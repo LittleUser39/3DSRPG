@@ -24,11 +24,14 @@ public class ConfirmAbilityTargetState : BattleState
         RefreshPrimaryStatPanel(turn.actor.tile.pos);
         //타겟 지정 타겟 능력UI 갱신
         //처음에 젤 처음 지정된 대상이 타겟이됨
-        if(turn.targets.Count>0)
+        if (turn.targets.Count > 0)
         {
-            HitSuccessIndicator.Show();
+            if (driver.Current == Drivers.Human)
+                HitSuccessIndicator.Show();
             SetTarget(0);
         }
+        if (driver.Current == Drivers.Computer)
+            StartCoroutine(ComputerDisplayAbilitySelection());
     }
 
     public override void Exit()
@@ -127,5 +130,10 @@ public class ConfirmAbilityTargetState : BattleState
         //두개의 매개변수에 따라 UI의 FillAmount 값이 변경됨
         HitSuccessIndicator.SetStats(chance, amount);
     }
-   
+   IEnumerator ComputerDisplayAbilitySelection()
+    {
+        owner.BattleMassegeController.Display(turn.ability.name);
+        yield return new WaitForSeconds(2f);
+        owner.ChangeState<PerformAbilityState>();
+    }
 }

@@ -39,6 +39,11 @@ public class BattleController : StateMachine
     //유닛의 방향을 강조하는 오브젝트
     public FacingIndicator facingIndicator;
 
+    //배틀 메세지를 띄워주는 ui
+    public BattleMassegeController BattleMassegeController;
+
+    //AI
+    public ComputerPlayer cpu;
     private void Start()
     {
         ChangeState<InitBattleState>();

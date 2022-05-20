@@ -9,7 +9,7 @@ public abstract class HitRate : MonoBehaviour
 {
     //델리게이트 키 리스트
     public const string AutomaticHitCheckNotification = "HitRate.AutomaticHitCheckNotification";
-    public const string AutomaticMissCheckNotification = "GitRate.AutomaticMissCheckNotification";
+    public const string AutomaticMissCheckNotification = "HitRate.AutomaticMissCheckNotification";
     public const string StatusCheckNotification = "HitRate.StatusCheckNotification";
    
     protected Unit attacker;
@@ -18,6 +18,10 @@ public abstract class HitRate : MonoBehaviour
     //tile에 해당 유닛의 정보가 저장되어 있다
     //  public abstract int Calculate(Unit attacker, Unit target);
     public abstract int Calculate(Tile target);
+    
+    //각도에 따른 명중률
+    public virtual bool IsAngleBased { get { return true; } }
+
     //명중하는 것을 랜덤으로 정해주는 함수인것 같음
     public virtual bool RollForHit(Tile target)
     {

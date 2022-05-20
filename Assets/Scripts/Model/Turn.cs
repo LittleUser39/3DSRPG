@@ -21,6 +21,7 @@ public class Turn
     Tile startTile;
     //시작 방향
     Directions startDir;
+    public PlanOfAttack plan;
 
     public void Change(Unit current)
     {
@@ -35,6 +36,7 @@ public class Turn
         //시작 타일, 시작방향 설정
         startTile = actor.tile;
         startDir = actor.dir;
+        plan = null;
     }
 
     //이동이 취소됨

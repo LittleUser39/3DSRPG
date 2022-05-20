@@ -12,4 +12,5 @@ public class UnitRecipe : ScriptableObject
     public string abilityCatalog;   //능력 종류
     public Locomotions locomotions; //이동 방식 (열거형)
     public Alliances alliances;     //동맹
+    public string strategy;         //AI 전략
 }

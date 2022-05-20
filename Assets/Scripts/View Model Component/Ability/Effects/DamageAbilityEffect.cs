@@ -42,7 +42,7 @@ public class DamageAbilityEffect : BaseAbilityEffect
         //최종 피해량이 참조
         int value = Predict(target);
         //0.9~1.1배 랜덤값 적용
-        value = Mathf.FloorToInt(UnityEngine.Random.Range(0.9f, 1.1f));
+        value = Mathf.FloorToInt(value * UnityEngine.Random.Range(0.9f, 1.1f));
         //value가 최소,최대 값 넘지 않도록 조정
         value = Mathf.Clamp(value, minDamage, maxDamage);
         //방어자의 체력값 변경 (데미지적용)

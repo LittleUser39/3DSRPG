@@ -5,6 +5,7 @@ using UnityEngine;
 //자신의 위치를 반환하는 클래스
 public class SelfAbiltyRange : AbilityRange
 {
+    public override bool postitionOriented { get { return false; } }
     public override List<Tile> GetTilesInRange(Board board)
     {
         //자신의 위치를 반환

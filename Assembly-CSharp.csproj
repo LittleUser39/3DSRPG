@@ -74,6 +74,7 @@
     <Compile Include="Assets\Scripts\Common\UI\LayoutAnchor.cs" />
     <Compile Include="Assets\Scripts\Common\UI\Panel.cs" />
     <Compile Include="Assets\Scripts\Controller\AutoStatusController.cs" />
+    <Compile Include="Assets\Scripts\Controller\BattleMassegeController.cs" />
     <Compile Include="Assets\Scripts\Controller\BattleState\AbilityTargetState.cs" />
     <Compile Include="Assets\Scripts\Controller\BattleState\ActionSelectionState.cs" />
     <Compile Include="Assets\Scripts\Controller\BattleState\BaseAbilityMenuState.cs" />
@@ -102,10 +103,12 @@
     <Compile Include="Assets\Scripts\Controller\VictoryCondition\DefeatTargetVictoryCondition.cs" />
     <Compile Include="Assets\Scripts\Enum\Alliances.cs" />
     <Compile Include="Assets\Scripts\Enum\Directions.cs" />
+    <Compile Include="Assets\Scripts\Enum\Driver.cs" />
     <Compile Include="Assets\Scripts\Enum\EquipSlots.cs" />
     <Compile Include="Assets\Scripts\Enum\Facing.cs" />
     <Compile Include="Assets\Scripts\Enum\Locomotions.cs" />
     <Compile Include="Assets\Scripts\Enum\StateTypes.cs" />
+    <Compile Include="Assets\Scripts\Enum\Targets.cs" />
     <Compile Include="Assets\Scripts\EventArgs\InfoEventArgs.cs" />
     <Compile Include="Assets\Scripts\Extensions\Ability\HitRate\ATypeHitRate.cs" />
     <Compile Include="Assets\Scripts\Extensions\Ability\HitRate\FullTypeHitRate.cs" />
@@ -141,6 +144,12 @@
     <Compile Include="Assets\Scripts\Temp\PanelTest.cs" />
     <Compile Include="Assets\Scripts\Temp\TestItems.cs" />
     <Compile Include="Assets\Scripts\Temp\TestLevelGrowth.cs" />
+    <Compile Include="Assets\Scripts\View Model Component\AI\AbilityPicker\BaseAbilityPicker.cs" />
+    <Compile Include="Assets\Scripts\View Model Component\AI\AbilityPicker\FixedAbilityPicker.cs" />
+    <Compile Include="Assets\Scripts\View Model Component\AI\AbilityPicker\RandomAbilityPicker.cs" />
+    <Compile Include="Assets\Scripts\View Model Component\AI\AttackOption.cs" />
+    <Compile Include="Assets\Scripts\View Model Component\AI\AttackPattern.cs" />
+    <Compile Include="Assets\Scripts\View Model Component\AI\PlanOfAttack.cs" />
     <Compile Include="Assets\Scripts\View Model Component\Ability\Ability.cs" />
     <Compile Include="Assets\Scripts\View Model Component\Ability\AbilityCatalog.cs" />
     <Compile Include="Assets\Scripts\View Model Component\Ability\AbilityMagicCost.cs" />
@@ -171,6 +180,8 @@
     <Compile Include="Assets\Scripts\View Model Component\AbilityMenuEntry.cs" />
     <Compile Include="Assets\Scripts\View Model Component\AbilityMenuPanelController.cs" />
     <Compile Include="Assets\Scripts\View Model Component\Actor\Alliance.cs" />
+    <Compile Include="Assets\Scripts\View Model Component\Actor\ComputerPlayer.cs" />
+    <Compile Include="Assets\Scripts\View Model Component\Actor\Driver.cs" />
     <Compile Include="Assets\Scripts\View Model Component\Actor\Equipment.cs" />
     <Compile Include="Assets\Scripts\View Model Component\Actor\Health.cs" />
     <Compile Include="Assets\Scripts\View Model Component\Actor\Job.cs" />

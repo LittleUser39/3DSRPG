@@ -30,6 +30,10 @@ public class AbilityTargetState : BattleState
             //피격자 능력치 정보 ui출력
             RefreshSecondaryStatPanel(pos);
         }
+        if(driver.Current==Drivers.Computer)
+        {
+            StartCoroutine(ComputerHighlightTarget());
+        }
 
     }
     //ability targetstate 상태가 종료될때 호출
@@ -106,4 +110,10 @@ public class AbilityTargetState : BattleState
         board.SelectTile(tiles);
     }
        
+    IEnumerator ComputerHighlightTarget()
+    {
+        owner.BattleMassegeController.Display(turn.ability.name);
+        yield return new WaitForSeconds(2f);
+        owner.ChangeState<PerformAbilityState>();
+    }
 }

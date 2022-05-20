@@ -37,6 +37,7 @@ public static class UnitFactory
         AddAttack(obj, recipe.attack);
         AddAbilityCatalog(obj, recipe.abilityCatalog);
         AddAlliance(obj, recipe.alliances);
+        AddAttackPattern(obj, recipe.strategy);
         return obj;
     }
 
@@ -50,6 +51,7 @@ public static class UnitFactory
             return new GameObject(name);
         }
         GameObject instance = GameObject.Instantiate(prefab);
+        instance.name = instance.name.Replace("(Clone)", "");
         return instance;
     }
 
@@ -137,10 +139,27 @@ public static class UnitFactory
             {
                 string abilityName = string.Format("Abilities/{0}/{1}", recipe.categories[i].name, recipe.categories[i].entries[j]);
                 GameObject ability = InstantiatePrefab(abilityName);
-                ability.name = recipe.categories[i].entries[j];
+                //ability.name = recipe.categories[i].entries[j];
                 ability.transform.SetParent(category.transform);
             }
         }
         
+    }
+
+    //유닛에 공격패턴 추가해주는 함수
+    //조종을 컴퓨터가 한다면 패턴을 넣어줌
+    static void AddAttackPattern(GameObject obj,string name)
+    {
+        Driver driver = obj.AddComponent<Driver>();
+        if(string.IsNullOrEmpty(name))
+        {
+            driver.normal = Drivers.Human;
+        }
+        else
+        {
+            driver.normal = Drivers.Computer;
+            GameObject instance = InstantiatePrefab("Attack Pattern/" + name);
+            instance.transform.SetParent(obj.transform);
+        }
     }
 }

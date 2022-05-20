@@ -17,6 +17,9 @@ public class EndFacingState : BattleState
 
         //
         owner.facingIndicator.SetDirection(turn.actor.dir);
+
+        if (driver.Current == Drivers.Computer)
+            StartCoroutine(ComputerControl());
     }
     public override void Exit()
     {
@@ -45,5 +48,15 @@ public class EndFacingState : BattleState
                 owner.ChangeState<CommandSelectionState>();
                 break;
         }
+    }
+    //컴퓨터가 끝을 향하는 방향을 결정하는 함수
+    IEnumerator ComputerControl()
+    {
+        yield return new WaitForSeconds(0.5f);
+        turn.actor.dir = owner.cpu.DetermineEndFacingDirection();
+        turn.actor.Match();
+        owner.facingIndicator.SetDirection(turn.actor.dir);
+        yield return new WaitForSeconds(0.5f);
+        owner.ChangeState<SelectUnitState>();
     }
 }
