@@ -24,7 +24,7 @@ public class Ability : MonoBehaviour
             return;
         }
 
-        for(int i =0;i<targets.Count;++i)
+        for(int i =0;i < targets.Count;++i)
         {
             Perform(targets[i]);
         }

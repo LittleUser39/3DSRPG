@@ -102,7 +102,7 @@ public class Panel : MonoBehaviour
 
         // 이동 중인 UI 가 있으면
         // 멈춘다.
-        if (InTransition) Transition.easingControl.Stop();
+        if (InTransition) Transition.Stop();
 
 
         if (animated)

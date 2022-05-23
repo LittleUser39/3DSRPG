@@ -60,7 +60,7 @@ public class TurnOrderController : MonoBehaviour
                     bc.turn.Change(units[i]);
 
                     //턴이 시작될 유닛이 결정되면 델리게이트 호출
-                    units.PostNotification(TurnBeganNotification);
+                    units[i].PostNotification(TurnBeganNotification);
                     
                     //해당 유닛의 프레임이 종료 될때 까지 대기
                     //SelectUnitState의 ChangeCurrentUnit 코루틴 함수의
@@ -91,12 +91,6 @@ public class TurnOrderController : MonoBehaviour
     }
     bool CanTakeTurn(Unit target)
     {
-
-        Alliance a = target.GetComponentInChildren<Alliance>();
-        if (a.type == Alliances.Hero)
-        {
-            return false;
-        }
         //유닛의 CTR수치가 1000보다 크거나 같으면 exc.toggle에 true 저장
         //1000보다 작으면 exc.toggle에 false 저장
         BaseException exc = new BaseException(GetCounter(target) >= turnActivation);

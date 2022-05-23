@@ -63,12 +63,12 @@ public class WalkMoveMent : Movement
         Tweener tweener = transform.MoveTo(target.center, 0.5f, EasingEquations.Linear);
 
         Vector3 stepHeightVec = new Vector3(0, Tile.stepHeight * 2f, 0);
-        float destinationTweener = tweener.easingControl.duration / 2f;
+        float destinationTweener = tweener.duration / 2f;
 
         Tweener t2
         = jumper.MoveToLocal(stepHeightVec, destinationTweener, EasingEquations.EaseInOutQuad);
-        t2.easingControl.loopCount = 1;
-        t2.easingControl.loopType = EasingControl.LoopType.PingPong;
+        t2.loopCount = 1;
+        t2.loopType = EasingControl.LoopType.PingPong;
 
         while (tweener != null)
             yield return null;

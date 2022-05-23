@@ -20,6 +20,6 @@ public class MoveSequenceState : BattleState
 
         turn.hasUnitMoved = true;
 
-        owner.ChangeState<SelectUnitState>();
+        owner.ChangeState<CommandSelectionState>();
     }
 }

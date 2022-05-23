@@ -12,7 +12,7 @@ public static class UnitFactory
     public static GameObject Create(string name,int level)
     {
         UnitRecipe recipe = Resources.Load<UnitRecipe>("Unit Recipes/" + name);
-        if(recipe==null)
+        if(recipe==null) 
         {
             Debug.LogError("No Unit Recipe for name:" + name);
             return null;

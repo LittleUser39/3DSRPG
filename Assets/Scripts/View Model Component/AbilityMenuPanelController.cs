@@ -103,7 +103,7 @@ public class AbilityMenuPanelController : MonoBehaviour
         Tweener t = TogglePos(HideKey);
 
         //메뉴판 감추기 애니가 완료되면
-        t.easingControl.completedEvent += delegate (object sender, System.EventArgs e)
+        t.completedEvent += delegate (object sender, System.EventArgs e)
           {
               //메뉴판 상태 초기화 및 ui 비활성화 시키기
               if (panel.CurrentPosition == panel[HideKey])
@@ -151,8 +151,8 @@ public class AbilityMenuPanelController : MonoBehaviour
     Tweener TogglePos(string pos)
     {
         Tweener t = panel.SetPosition(pos, true);
-        t.easingControl.duration = 0.5f;
-        t.easingControl.equation = EasingEquations.EaseOutQuad;
+        t.duration = 0.5f;
+        t.equation = EasingEquations.EaseOutQuad;
         return t;
     }
 

@@ -6,22 +6,22 @@ using UnityEngine;
 public abstract class BaseAbilityPicker : MonoBehaviour
 {
     protected Unit owner;
-    protected AbilityCatalog ability;
+    protected AbilityCatalog ac;
 
     private void Start()
     {
         owner = GetComponentInParent<Unit>();
-        ability = owner.GetComponentInChildren<AbilityCatalog>();
+        ac = owner.GetComponentInChildren<AbilityCatalog>();
     }
 
     public abstract void Pick(PlanOfAttack plan);
 
     protected Ability Find(string abilityName)
     {
-        for(int i=0; i<ability.transform.childCount;++i)
+        for(int i = 0; i < ac.transform.childCount;++i)
         {
-            Transform category = ability.transform.GetChild(i);
-            Transform child = category.FindChild(abilityName);
+            Transform category = ac.transform.GetChild(i);
+            Transform child = category.Find(abilityName);
             if(child!=null)
             {
                 return child.GetComponent<Ability>();

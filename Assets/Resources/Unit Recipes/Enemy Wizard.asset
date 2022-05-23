@@ -18,3 +18,4 @@ MonoBehaviour:
   abilityCatalog: EnemyWizard
   locomotions: 2
   alliances: 4
+  strategy: Mage Attack Pattern

@@ -8,7 +8,7 @@ public class ConfirmAbilityTargetState : BattleState
     List<Tile> tiles;
     AbilityArea area;
     int index = 0;
-    AbilityEffectTarget[] targetsers;
+   
     public override void Enter()
     {
         base.Enter();
@@ -90,7 +90,7 @@ public class ConfirmAbilityTargetState : BattleState
     {
         index = target;
 
-        if(index<0)
+        if(index < 0)
         {
             index = turn.targets.Count - 1;
         }

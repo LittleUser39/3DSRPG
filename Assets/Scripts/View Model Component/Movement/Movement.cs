@@ -45,13 +45,13 @@ public abstract class Movement : MonoBehaviour
 
         //북쪽과 서쪽 사이를 회전할 때 효율적인 방법으로 회전하는것처럼 보이도록
         //예외를 만들어야함(0과360도는 동일하게 봄)
-        if(Mathf.Approximately(t.startValue.y,0f)&&Mathf.Approximately(t.endValue.y,270f))
+        if(Mathf.Approximately(t.startTweenValue.y,0f)&&Mathf.Approximately(t.endTweenValue.y,270f))
         {
-            t.startValue = new Vector3(t.startValue.x, 360f, t.startValue.z);
+            t.startTweenValue = new Vector3(t.startTweenValue.x, 360f, t.startTweenValue.z);
         }
-        else if(Mathf.Approximately(t.startValue.y,270)&&Mathf.Approximately(t.endValue.y,0))
+        else if(Mathf.Approximately(t.startTweenValue.y,270)&&Mathf.Approximately(t.endTweenValue.y,0))
         {
-            t.endValue = new Vector3(t.startValue.x, 360f, t.startValue.z);
+            t.endTweenValue = new Vector3(t.startTweenValue.x, 360f, t.startTweenValue.z);
         }
         unit.dir = dir;
         while (t != null) yield return null;

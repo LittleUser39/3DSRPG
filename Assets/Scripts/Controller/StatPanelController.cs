@@ -64,11 +64,11 @@ public class StatPanelController : MonoBehaviour
         {
             if (t != null)
             {
-                t.easingControl.Stop();
+                t.Stop();
             }
             t = obj.panel.SetPosition(pos, true);
-            t.easingControl.duration = 0.5f;
-            t.easingControl.equation = EasingEquations.EaseInOutQuad;
+            t.duration = 0.5f;
+            t.equation = EasingEquations.EaseInOutQuad;
         }
     }
 }

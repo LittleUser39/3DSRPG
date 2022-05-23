@@ -23,6 +23,7 @@ public class HitSuccessIndicator : MonoBehaviour
     {
         arrow.fillAmount = (chance / 100f);
         label.text = string.Format("{0}%{1}pt(s)", chance, amount);
+        label.color = amount > 0 ? Color.green : Color.red;
     }
     public void Show()
     {
@@ -32,7 +33,7 @@ public class HitSuccessIndicator : MonoBehaviour
     public void Hide()
     {
         SetPanelPos(HideKey);
-        transition.easingControl.completedEvent += delegate (object sender, System.EventArgs e)
+        transition.completedEvent += delegate (object sender, System.EventArgs e)
           {
               Canvas.gameObject.SetActive(false);
           };
@@ -40,13 +41,13 @@ public class HitSuccessIndicator : MonoBehaviour
     void SetPanelPos(string pos)
     {
         //해당 개체가 애니메이션이 재생중이면 앞에서 재생하던것을 멈춤
-        if(transition!=null&&transition.easingControl.IsPlaying)
+        if(transition!=null&&transition.IsPlaying)
         {
-            transition.easingControl.Stop();
+            transition.Stop();
         }
         //애니메이션 동작(pos에 저장된 위치로)
         transition = Panel.SetPosition(pos, true);
-        transition.easingControl.duration = 0.5f;
-        transition.easingControl.equation = EasingEquations.EaseInOutQuad;
+        transition.duration = 0.5f;
+        transition.equation = EasingEquations.EaseInOutQuad;
     }
 }

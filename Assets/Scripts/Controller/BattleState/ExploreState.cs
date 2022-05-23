@@ -9,7 +9,8 @@ public class ExploreState : BattleState
     {
         //해당 상태가 되면 초상화 정보를 출력
         base.Enter();
-        statPanelController.ShowPrimary(turn.actor.gameObject);
+        RefreshPrimaryStatPanel(pos);
+        //statPanelController.ShowPrimary(turn.actor.gameObject);
     }
     public override void Exit()
     {

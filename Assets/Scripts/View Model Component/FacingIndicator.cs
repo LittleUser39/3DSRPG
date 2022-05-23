@@ -6,17 +6,26 @@ using UnityEngine;
 //유닛이 바라보는 방향을 화살표등으로 알려주는 클래스
 public class FacingIndicator : MonoBehaviour
 {
-    [SerializeField] Renderer[] direction;
+    [SerializeField] Renderer[] directions;
     [SerializeField] Material normal;
     [SerializeField] Material selected;
 
     public void SetDirection(Directions dir)
     {
         //방향을 설정
+
         int index = (int)dir;
-        for(int i = 0; i < 4; ++i)
+        for (int i = 0; i < 4; ++i)
         {
-            direction[i].material = (i == index) ? selected : normal;
+            //directions[i].material = (i == index) ? selected : normal;
+            if(i==index)
+            {
+                directions[i].material = selected;
+            }
+             else
+            {
+                directions[i].material = normal;
+            }
         }
     }
 }

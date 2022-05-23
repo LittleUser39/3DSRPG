@@ -18,3 +18,4 @@ MonoBehaviour:
   abilityCatalog: EnemyWarrior
   locomotions: 0
   alliances: 4
+  strategy: WarriorAttackPattern

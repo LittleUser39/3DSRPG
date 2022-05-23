@@ -90,7 +90,7 @@ public class AbilityTargetState : BattleState
         Directions dir = p.GetDirections();
 
         //turn.actor.dir과 위방향이 다르다면
-        if(turn.actor.dir!=dir)
+        if(turn.actor.dir != dir)
         {
             //선택된 타일 해제
             board.DeSelectTiles(tiles);
@@ -112,8 +112,26 @@ public class AbilityTargetState : BattleState
        
     IEnumerator ComputerHighlightTarget()
     {
-        owner.BattleMassegeController.Display(turn.ability.name);
-        yield return new WaitForSeconds(2f);
-        owner.ChangeState<PerformAbilityState>();
+        if(ar.directionOriented)
+        {
+            ChangeDirection(turn.plan.attackDirection.GetNormal());
+            yield return new WaitForSeconds(0.25f);
+        }
+        else
+        {
+            Point cursorPos = pos;
+            while(cursorPos!=turn.plan.fireLocation)
+            {
+                if (cursorPos.x < turn.plan.fireLocation.x) cursorPos.x++;
+                if (cursorPos.x > turn.plan.fireLocation.x) cursorPos.x--;
+                if (cursorPos.y < turn.plan.fireLocation.y) cursorPos.y++;
+                if (cursorPos.y > turn.plan.fireLocation.y) cursorPos.y--;
+                SelectTile(cursorPos);
+                yield return new WaitForSeconds(0.25f);
+                
+            }
+        }
+        yield return new WaitForSeconds(0.5f);
+        owner.ChangeState<ConfirmAbilityTargetState>();
     }
 }

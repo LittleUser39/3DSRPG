@@ -140,7 +140,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &76821728
 Transform:
   m_ObjectHideFlags: 0
@@ -982,6 +982,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Facing Indicator
       objectReference: {fileID: 0}
+    - target: {fileID: 1190184830161886164, guid: a1f8c6815b8968f41b093229bb8ad2d0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1f8c6815b8968f41b093229bb8ad2d0, type: 3}
 --- !u!114 &973034796479407941 stripped
@@ -1071,7 +1076,7 @@ PrefabInstance:
     - target: {fileID: 6454580633396767400, guid: a4d378ae56b4e074ba80c4e825f297d9,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 74
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6454580633581737793, guid: a4d378ae56b4e074ba80c4e825f297d9,
         type: 3}

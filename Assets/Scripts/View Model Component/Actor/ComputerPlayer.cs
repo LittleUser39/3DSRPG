@@ -34,7 +34,7 @@ public class ComputerPlayer : MonoBehaviour
         //이동,캐스팅,회전시 잠재적으로 업데이트 한다
         if(IsPositionIndependent(poa))
         {
-            PlanDirectionIndependent(poa);
+            PlanPositionIndependent(poa);
         }
         else if(IsDirectionIndependent(poa))
         {
@@ -54,8 +54,10 @@ public class ComputerPlayer : MonoBehaviour
         //완료된 계획을 반환
         return poa;
     }
+
     void DefaultAttackPattern(PlanOfAttack poa)
     {
+        //첫번째 공격 능력을 가져옴
         poa.ability = actor.GetComponentInChildren<Ability>();
         poa.targets = Targets.Foe;
     }
@@ -66,6 +68,7 @@ public class ComputerPlayer : MonoBehaviour
         AbilityRange range = poa.ability.GetComponent<AbilityRange>();
         return range.postitionOriented == false;
     }
+
     void PlanPositionIndependent(PlanOfAttack poa)
     {
         List<Tile> moveOptions = GetMoveOptions();
@@ -95,7 +98,7 @@ public class ComputerPlayer : MonoBehaviour
 
             for(int j=0;j<fireOptrions.Count;++j)
             {
-                Tile fireTile = fireOptrions[i];
+                Tile fireTile = fireOptrions[j];
                 AttackOption ao = null;
                 if(map.ContainsKey(fireTile))
                 {
@@ -157,12 +160,13 @@ public class ComputerPlayer : MonoBehaviour
     {
         AbilityArea area = poa.ability.GetComponent<AbilityArea>();
         List<Tile> tiles = area.GetTilesInArea(bc.board, option.target.pos);
+        option.areaTargets = tiles;
         option.isCasterMatch = IsAbilityTargetMatch(poa, actor.tile);
 
         for(int i=0;i<tiles.Count;++i)
         {
             Tile tile = tiles[i];
-            if(actor.tile==tiles[i]||!poa.ability.IsTarget(tile))
+            if(actor.tile==tiles[i] || !poa.ability.IsTarget(tile))
             {
                 continue;
             }
@@ -205,11 +209,12 @@ public class ComputerPlayer : MonoBehaviour
                 bestOption.Clear();
                 bestOption.Add(option);
             }
-            else if(score==bestScore)
+            else if(score == bestScore)
             {
                 bestOption.Add(option);
             }
         }
+
         if(bestOption.Count==0)
         {
             poa.ability = null; //수행하지 않아서 지움
