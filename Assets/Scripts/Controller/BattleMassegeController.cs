@@ -22,11 +22,11 @@ public class BattleMassegeController : MonoBehaviour
         ec.endBehaviour = EasingControl.EndBehaviour.Constant;
         ec.updateEvent += OnUpdateEvent;
     }
-    public void Display(string message)
+    public void Display(string target,string message)
     {
         group.alpha = 0;
         canvas.SetActive(true);
-        label.text = message;
+        label.text = string.Format("{0}가{1}를 사용" ,target,message);
         StartCoroutine(Sequence());
     }
     void OnUpdateEvent(object sender,EventArgs e)

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DamageAbilityEffect : BaseAbilityEffect
 {
-   
+   //이게 데미지를 계산하는 함수
     public override int Predict(Tile target)
     {
         //공격자 방어자 유닛 참조
@@ -35,6 +35,8 @@ public class DamageAbilityEffect : BaseAbilityEffect
         damage = Mathf.Clamp(damage, minDamage, maxDamage);
         return -damage;
     }
+
+    //데미지를 적용하는 함수
     public override int OnApply(Tile target)
     {
         //방어자 유닛 참조

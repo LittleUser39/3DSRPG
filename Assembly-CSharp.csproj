@@ -192,6 +192,7 @@
     <Compile Include="Assets\Scripts\View Model Component\Board.cs" />
     <Compile Include="Assets\Scripts\View Model Component\CameraRig.cs" />
     <Compile Include="Assets\Scripts\View Model Component\ConversationPanel.cs" />
+    <Compile Include="Assets\Scripts\View Model Component\DamageText.cs" />
     <Compile Include="Assets\Scripts\View Model Component\FacingIndicator.cs" />
     <Compile Include="Assets\Scripts\View Model Component\Features\AddPoisonFeature.cs" />
     <Compile Include="Assets\Scripts\View Model Component\Features\AddStatusFeature.cs" />

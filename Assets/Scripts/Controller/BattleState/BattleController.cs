@@ -42,8 +42,12 @@ public class BattleController : StateMachine
     //배틀 메세지를 띄워주는 ui
     public BattleMassegeController BattleMassegeController;
 
+    //데미지를 띄워주는 ui
+    public DamageText damageText;
+
     //AI
     public ComputerPlayer cpu;
+
     private void Start()
     {
         ChangeState<InitBattleState>();

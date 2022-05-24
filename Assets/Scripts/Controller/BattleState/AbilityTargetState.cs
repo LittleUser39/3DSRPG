@@ -64,6 +64,7 @@ public class AbilityTargetState : BattleState
         }
     }
 
+    //확인이나 취소를 눌렀을때 반응하는 함수
     protected override void OnFire(object Sender, InfoEventArgs<int> e)
     {   //왼쪽 마우스를 눌렀을때
         if (e.info == 0)

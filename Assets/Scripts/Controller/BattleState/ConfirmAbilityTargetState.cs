@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //피격 범위 내 타겟 리스트를 저장하고 지정된 타겟의 능력ui를 갱신하는 역활
+//여기가 타겟을 정하면 이제 데미지 계산이랑 스킬이 나가는 클래스
 public class ConfirmAbilityTargetState : BattleState
 {
     List<Tile> tiles;
@@ -46,6 +47,7 @@ public class ConfirmAbilityTargetState : BattleState
         HitSuccessIndicator.Hide();
     }
 
+    //방향키로 타겟 변경하는 함수
     protected override void OnMove(object sender, InfoEventArgs<Point> e)
     {
         //방향키로 타겟 변경 가능
@@ -58,6 +60,7 @@ public class ConfirmAbilityTargetState : BattleState
             SetTarget(index - 1);
         }
     }
+    //확인 취소했을때 실행하는 함수
     protected override void OnFire(object Sender, InfoEventArgs<int> e)
     {
         if(e.info==0)
@@ -106,13 +109,15 @@ public class ConfirmAbilityTargetState : BattleState
     }
     void UpdateHitSuccessIndicator()
     {
-        //타겟의 최종 능력치
+        //타겟의 회피?
         int chance = 0;
-        //0
+        //이게 데미지
         int amount = 0;
+        //타일위에 있는 타겟이 들어있는 배열
         Tile target = turn.targets[index];
         
         Transform obj = turn.ability.transform;
+        
         for (int i = 0; i < obj.childCount; ++i)
         {
             AbilityEffectTarget targeter = obj.GetChild(i).GetComponent<AbilityEffectTarget>();
@@ -123,16 +128,23 @@ public class ConfirmAbilityTargetState : BattleState
 
                 BaseAbilityEffect effect = targeter.GetComponent<BaseAbilityEffect>();
                 amount = effect.Predict(target);
+
                 break;
             }
         }
         //능력치 세팅
         //두개의 매개변수에 따라 UI의 FillAmount 값이 변경됨
         HitSuccessIndicator.SetStats(chance, amount);
+
+        //공격자 피격자 데미지 저장
+        owner.damageText.SetDamage(target.content.name,amount);
+   
     }
+  
+
    IEnumerator ComputerDisplayAbilitySelection()
     {
-        owner.BattleMassegeController.Display(turn.ability.name);
+        owner.BattleMassegeController.Display(turn.actor.name,turn.ability.name);
         yield return new WaitForSeconds(2f);
         owner.ChangeState<PerformAbilityState>();
     }

@@ -22,18 +22,26 @@ public class PerformAbilityState : BattleState
         //todo 나중에 여기서 애니메이션 재생해야함,
         yield return null;
         ApplyAbility();
+
+        //여기서 데미지 나오는거 플레이
+        owner.damageText.Display();
+       
+        //전투가 끝남
         if(IsBattleOver())
         {
             owner.ChangeState<CutSceneState>();
         }
+        //아직 움직일 유닛이 있을때
         else if(!UnitHasControl())
         {
             owner.ChangeState<SelectUnitState>();
         }
+        //해당 유닛이 움직였음
         else if(turn.hasUnitMoved)
         {
             owner.ChangeState<EndFacingState>();
         }
+        //오른쪽 마우스 클릭(취소)
         else
         {
             owner.ChangeState<CommandSelectionState>();
