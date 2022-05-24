@@ -13,6 +13,8 @@ public abstract class Movement : MonoBehaviour
     protected virtual void Awake()
     {
         unit = GetComponent<Unit>();
+
+        //이거 있어야 프리팹들이 움직임
         jumper = transform.Find("Jumper");
     }
     private void Start()

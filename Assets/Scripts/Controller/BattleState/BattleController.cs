@@ -48,6 +48,8 @@ public class BattleController : StateMachine
     //AI
     public ComputerPlayer cpu;
 
+    //test 변수 이펙트
+    public GameObject effect;
     private void Start()
     {
         ChangeState<InitBattleState>();

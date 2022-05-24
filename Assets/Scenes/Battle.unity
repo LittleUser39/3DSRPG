@@ -191,6 +191,7 @@ MonoBehaviour:
   BattleMassegeController: {fileID: 1379222507}
   damageText: {fileID: 91258748}
   cpu: {fileID: 76821732}
+  effect: {fileID: 152258, guid: b55fd49bd1a71dc4a95360c99a8b2e17, type: 3}
 --- !u!114 &76821730
 MonoBehaviour:
   m_ObjectHideFlags: 0

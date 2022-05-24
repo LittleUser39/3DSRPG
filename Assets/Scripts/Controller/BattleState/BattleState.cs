@@ -19,9 +19,11 @@ public abstract class BattleState : State
     public StatPanelController statPanelController { get { return owner.StatPanelController; } }
     public HitSuccessIndicator HitSuccessIndicator { get { return owner.HitSuccessIndicator; } }
 
+    
     public override void Enter()
     {
         driver = (turn.actor != null) ? turn.actor.GetComponent<Driver>() : null;
+        
         base.Enter();
     }
     protected virtual void Awake()

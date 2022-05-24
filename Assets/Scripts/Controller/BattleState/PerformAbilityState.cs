@@ -6,10 +6,13 @@ using UnityEngine;
 //공격할 대상을 지정하면 유닛이 행동하는 상태 클래스
 public class PerformAbilityState : BattleState
 {
+    Animator animator;
     public override void Enter()
     {
         base.Enter();
 
+       // animator = turn.actor.GetComponent<Animator>();
+        
         turn.hasUnitActed = true;
         if(turn.hasUnitMoved)
         {
@@ -20,9 +23,12 @@ public class PerformAbilityState : BattleState
     IEnumerator Animate()
     {
         //todo 나중에 여기서 애니메이션 재생해야함,
-        yield return null;
-        ApplyAbility();
 
+       // animator.SetBool("Attack", true);
+        yield return new WaitForSeconds(1);
+       // animator.SetBool("Attack", false);
+        ApplyAbility();
+        
         //여기서 데미지 나오는거 플레이
         owner.damageText.Display();
        
@@ -50,30 +56,17 @@ public class PerformAbilityState : BattleState
    
     void ApplyAbility()
     {
+        //이펙트 출력하는 것 test
+        if (turn.ability.name == "Water")   
+        {
+            for(int i=0;i < turn.targets.Count; ++i)
+            {
+              var waterPrefab = Instantiate(owner.effect, turn.targets[i].transform.position + new Vector3(0, 1f, 0), Quaternion.identity);
+            }
+        }
+        
         //능력 확인시 ability 클래스로 이동해서 perform 함수 실행
         turn.ability.Perform(turn.targets);
-        //변경전
-        //BaseAbilityEffect[] effects = turn.ability.GetComponentsInChildren<BaseAbilityEffect>();
-        //for (int i = 0; i < turn.targets.Count; ++i)
-        //{
-        //    Tile target = turn.targets[i];
-        //    for (int j = 0; j < effects.Length; ++j)
-        //    {
-        //        BaseAbilityEffect effect = effects[j];
-        //        AbilityEffectTarget targeter = effect.GetComponent<AbilityEffectTarget>();
-        //        if(targeter.IsTarget(target))
-        //        {
-        //            HitRate rate = effect.GetComponent<HitRate>();
-        //            int chance = rate.Calculate(target);
-        //            if(UnityEngine.Random.Range(0,101)>chance)
-        //            {
-        //                //Miss
-        //                continue;
-        //            }
-        //            effect.Apply(target);
-        //        }
-        //    }
-        //}
     }
     bool UnitHasControl()
     {
