@@ -68,12 +68,14 @@ public class Rank : MonoBehaviour
         //maxExperience 범위를 넘어가지 않도록 보정
         vce.AddModifier(new ClampValueModifier(int.MaxValue, EXP, maxExperience));
     }
+
     void OnExpDidChange(object sender,object args)
     {
         //레벨이 증가되었는지 체크
         //증가되었으면 레벨 수치를 증가
         stats.SetValue(StateTypes.LVL, LevelForExperience(EXP), false);
     }
+    
     public static int ExperienceForLevel(int level)
     {
         //최대 레벨 도달량
@@ -84,6 +86,7 @@ public class Rank : MonoBehaviour
         return (int)EasingEquations.EaseInOutQuad(0, maxExperience, levelPercent);
     }
 
+    //레벨 반환
     public static int LevelForExperience(int exp)
     {
         //exp에 따른 레벨 계산

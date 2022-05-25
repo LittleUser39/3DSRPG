@@ -10,7 +10,11 @@ public class EndBattleState : BattleState
     public override void Enter()
     {
         base.Enter();
-        //이거 바꿔야함
-        Application.LoadLevel(0);
+
+        ExperienceManger.AwardExperience(stageEXP, units);
+        ExperienceManger.LogParty(units);
+       
+       //이거 바꿔야함
+       Application.LoadLevel(0);
     }
 }

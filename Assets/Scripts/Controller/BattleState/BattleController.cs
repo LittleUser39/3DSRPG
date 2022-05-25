@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class BattleController : StateMachine
 {
+    //현재 타일 반환
     public Tile currentTile { get { return board.GetTile(pos); } }
+    
+    //게임의 턴
     public Turn turn = new Turn();
+    
+    //게임 안의 유닛 리스트
     public List<Unit> units = new List<Unit>();
   
     //메인 카메라 컴포넌트
@@ -50,8 +55,14 @@ public class BattleController : StateMachine
 
     //test 변수 이펙트
     public GameObject effect;
+
+  
     private void Start()
     {
+        //이렇게 해서 버튼을 누르면 레벨데이터를 가져오는 방식으로 Stage 불러오기 - 완료 -
+        leveldata = Resources.Load<LevelData>(string.Format("Levels/{0}",SelectController.instance.stageName));
+       //leveldata = Resources.Load<LevelData>("Levels/Stage 1");
+
         ChangeState<InitBattleState>();
     }
 }

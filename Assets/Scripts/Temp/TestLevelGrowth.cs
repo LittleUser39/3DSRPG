@@ -19,7 +19,6 @@ public class TestLevelGrowth : MonoBehaviour
     {
         this.RemoveObserver(OnLevelChange, Stats.DidChangeNotification(StateTypes.LVL));
         this.RemoveObserver(OnExperienceException, Stats.WillChangeNotification(StateTypes.EXP));
-
     }
 
     private void Start()
@@ -80,7 +79,8 @@ public class TestLevelGrowth : MonoBehaviour
         Debug.Log("===================");
 
         //경험치 추가하기(레벨이 높을수록 낮은 경험치가 추가됨)
-        ExperienceManger.AwardExperience(1000, heroes);
+        //이게 경험치 추가
+        //ExperienceManger.AwardExperience(1000, heroes);
         Debug.Log("After Adding EXP");
 
         LogParty(heroes);

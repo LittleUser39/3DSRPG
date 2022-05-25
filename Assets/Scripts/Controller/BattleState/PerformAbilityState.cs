@@ -11,8 +11,11 @@ public class PerformAbilityState : BattleState
     {
         base.Enter();
 
-       // animator = turn.actor.GetComponent<Animator>();
-        
+        //해당 턴의 유닛의 애니메이션을 가져옴
+        if (turn.actor.GetComponent<Animator>() != null)
+        {
+            animator = turn.actor.GetComponent<Animator>();
+        }
         turn.hasUnitActed = true;
         if(turn.hasUnitMoved)
         {
@@ -23,10 +26,11 @@ public class PerformAbilityState : BattleState
     IEnumerator Animate()
     {
         //todo 나중에 여기서 애니메이션 재생해야함,
-
-       // animator.SetBool("Attack", true);
+        if(animator!=null)
+         animator.SetBool("Attack", true);
         yield return new WaitForSeconds(1);
-       // animator.SetBool("Attack", false);
+        if(animator!=null)
+           animator.SetBool("Attack", false);
         ApplyAbility();
         
         //여기서 데미지 나오는거 플레이
@@ -36,11 +40,13 @@ public class PerformAbilityState : BattleState
         if(IsBattleOver())
         {
             owner.ChangeState<CutSceneState>();
+          
         }
         //아직 움직일 유닛이 있을때
         else if(!UnitHasControl())
         {
             owner.ChangeState<SelectUnitState>();
+            
         }
         //해당 유닛이 움직였음
         else if(turn.hasUnitMoved)
@@ -52,18 +58,21 @@ public class PerformAbilityState : BattleState
         {
             owner.ChangeState<CommandSelectionState>();
         }
+
+        //애니메이션 초기화
+        animator = null;
     }
    
     void ApplyAbility()
     {
         //이펙트 출력하는 것 test
-        if (turn.ability.name == "Water")   
-        {
-            for(int i=0;i < turn.targets.Count; ++i)
-            {
-              var waterPrefab = Instantiate(owner.effect, turn.targets[i].transform.position + new Vector3(0, 1f, 0), Quaternion.identity);
-            }
-        }
+        //if (turn.ability.name == "Water")   
+        //{
+        //    for(int i=0;i < turn.targets.Count; ++i)
+        //    {
+        //      var waterPrefab = Instantiate(owner.effect, turn.targets[i].transform.position + new Vector3(0, 1f, 0), Quaternion.identity);
+        //    }
+        //}
         
         //능력 확인시 ability 클래스로 이동해서 perform 함수 실행
         turn.ability.Perform(turn.targets);

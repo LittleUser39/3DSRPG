@@ -179,7 +179,7 @@ MonoBehaviour:
   units: []
   cameraRig: {fileID: 1325360084}
   board: {fileID: 1290784736}
-  leveldata: {fileID: 11400000, guid: 136f1969e5a912b439b3a291188952c7, type: 2}
+  leveldata: {fileID: 0}
   tileselection: {fileID: 457320990}
   pos:
     x: 0

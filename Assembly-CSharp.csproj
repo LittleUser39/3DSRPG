@@ -96,6 +96,7 @@
     <Compile Include="Assets\Scripts\Controller\ExperienceManager.cs" />
     <Compile Include="Assets\Scripts\Controller\GameObjectPoolController.cs" />
     <Compile Include="Assets\Scripts\Controller\InputController.cs" />
+    <Compile Include="Assets\Scripts\Controller\SelectScene\SelectController.cs" />
     <Compile Include="Assets\Scripts\Controller\StatPanelController.cs" />
     <Compile Include="Assets\Scripts\Controller\TurnOrderController.cs" />
     <Compile Include="Assets\Scripts\Controller\VictoryCondition\BaseVictoryCondition.cs" />

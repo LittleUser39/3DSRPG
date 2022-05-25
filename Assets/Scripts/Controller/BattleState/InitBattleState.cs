@@ -14,7 +14,14 @@ public class InitBattleState : BattleState
     IEnumerator Init()
     {
         //타일맵 로드
+        //레벨 데이터를 로드
         board.Load(levelData);
+        
+        //이렇게 해서 스테이지 마지막에 경험치를 주는 방식으로 하면 될듯
+        if(levelData.name == "Stage 1")
+        {
+            stageEXP = 10000;
+        }
 
         //현재 선택된 타일인디게이터(게임오브젝트)의 좌표를 설정
         Point p = new Point((int)levelData.tiles[0].x, (int)levelData.tiles[0].z);
@@ -50,7 +57,7 @@ public class InitBattleState : BattleState
         vc.target = enemy;
         //일정 체력 이하로 설정(10) 체력 이하로 가면 승리하도록
         Health health = enemy.GetComponent<Health>();
-        health.minHP = 10;
+        health.minHP = 50;
     }
 
     //테스트 유닛 생성 함수
@@ -75,12 +82,13 @@ public class InitBattleState : BattleState
         {
             //랜덤으로 레벨값 생성
             
-            int level = UnityEngine.Random.Range(9, 12);
+            int level = 1;//UnityEngine.Random.Range(1,4);
             
             //팩토리에서 이름에 따라 유닛생성
             GameObject instance = UnitFactory.Create(recipes[i], level);
             instance.transform.SetParent(unitContainer.transform);
-            //팩토리에서 만든 유닛들을 유닛 컨테이너 오브젝트 자식으로 만듬
+            
+            //팩토리에서 만든 유닛들을 유닛 컨테이너 오브젝트 자식으로 만듬??
             //instance.transform.SetParent(unitContainer.transform);
             
             //랜덤값으로 생성될 타일 위치 저장
@@ -109,4 +117,8 @@ public class InitBattleState : BattleState
 //rank.Init(10);
 
 
-
+// 지금 문제가 제일 처음에 전투하는 것은 그냥 새로 만들면 되는데 (데이터를)
+// 두번째 전투 부터는 이제 프리팹은 새로 만든다 치는데
+// 전투를 했던 나의 유닛들의 데이터를 덮어씌워야함
+//
+//

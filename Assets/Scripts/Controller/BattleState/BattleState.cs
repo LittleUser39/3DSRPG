@@ -19,6 +19,7 @@ public abstract class BattleState : State
     public StatPanelController statPanelController { get { return owner.StatPanelController; } }
     public HitSuccessIndicator HitSuccessIndicator { get { return owner.HitSuccessIndicator; } }
 
+    public int stageEXP;
     
     public override void Enter()
     {

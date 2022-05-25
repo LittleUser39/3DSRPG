@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //List<GameObject>와 동일한 Party 라는 네임스페이스를 만듬
-using Party = System.Collections.Generic.List<UnityEngine.GameObject>;
+using Party = System.Collections.Generic.List<Unit>;
 
 
 //총 경험치를 캐릭터의 레벨에 따라 다르게 배분
@@ -13,10 +13,12 @@ using Party = System.Collections.Generic.List<UnityEngine.GameObject>;
  {
         const float minLevelBonus = 1.5f;
         const float maxLevelBonus = 0.5f;
+
+        //경험치 리워드 하는 함수
         public static void AwardExperience(int amount,Party party)
         {
             //party 숫자만큼 ranks에 추가
-            // ranks가 이제 
+            // ranks가 이제 레벨올라갈 유닛
             List<Rank> ranks = new List<Rank>(party.Count);
             for(int i=0; i<party.Count;++i)
             {
@@ -42,8 +44,15 @@ using Party = System.Collections.Generic.List<UnityEngine.GameObject>;
                 //ranks[i]의 레벨이
                 //인원들의 레벨 범위에서 위치하는 범위
                 float percent = (float)(ranks[i].LVL - min) / (float)(max - min);
-
-                //percent가 1이면 0.5배
+                
+                //0으로나누니 nan나와서 예외처리
+                if(percent.Equals(float.NaN))
+                {
+                    percent = 0;
+                }
+               
+            
+            //percent가 1이면 0.5배
                 //percent가 0이면 1.5배
                 //레벨이 높을수록 weights 값을 낮게 받음
                 weights[i] = Mathf.Lerp(minLevelBonus, maxLevelBonus, percent);
@@ -59,4 +68,14 @@ using Party = System.Collections.Generic.List<UnityEngine.GameObject>;
                 ranks[i].EXP += subAmount;
             }
         }
- }
+
+    public static void LogParty(Party p)
+    {
+        for (int i = 0; i < p.Count; ++i)
+        {
+            Unit actor = p[i];
+            Rank rank = actor.GetComponent<Rank>();
+            Debug.Log(string.Format("Name:{0} Level:{1} Exp:{2}", actor.name, rank.LVL, rank.EXP));
+        }
+    }
+}
