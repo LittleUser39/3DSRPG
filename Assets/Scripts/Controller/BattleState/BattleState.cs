@@ -19,8 +19,8 @@ public abstract class BattleState : State
     public StatPanelController statPanelController { get { return owner.StatPanelController; } }
     public HitSuccessIndicator HitSuccessIndicator { get { return owner.HitSuccessIndicator; } }
 
-    public int stageEXP;
-    
+    public int stageEXP { get { return owner.stageEXP; } }
+   
     public override void Enter()
     {
         driver = (turn.actor != null) ? turn.actor.GetComponent<Driver>() : null;

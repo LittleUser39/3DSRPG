@@ -13,8 +13,12 @@ public class EndBattleState : BattleState
 
         ExperienceManger.AwardExperience(stageEXP, units);
         ExperienceManger.LogParty(units);
+        
+        //전투가 끝난후 전투한 유닛들 넣어둔 리스트 클리어
+        //이거 넣어서 오류 수정함 비워줘야했음
+        units.Clear();
        
-       //이거 바꿔야함
+        //이거 바꿔야함
        Application.LoadLevel(0);
     }
 }

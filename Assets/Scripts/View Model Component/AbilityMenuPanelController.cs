@@ -33,6 +33,7 @@ public class AbilityMenuPanelController : MonoBehaviour
 
         canvas.SetActive(false);
     }
+    
     bool SetSelection(int value)
     {
         //잠금상태이면 선택 불가

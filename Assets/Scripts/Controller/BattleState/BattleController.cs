@@ -56,10 +56,16 @@ public class BattleController : StateMachine
     //test 변수 이펙트
     public GameObject effect;
 
-  
+    // test 스테이지 경험치
+    public int stageEXP;
+
+    //유닛 컨테이너 테스트
+    public GameObject heroContainer;
+
     private void Start()
     {
         //이렇게 해서 버튼을 누르면 레벨데이터를 가져오는 방식으로 Stage 불러오기 - 완료 -
+        //여기서 맵을 만듦
         leveldata = Resources.Load<LevelData>(string.Format("Levels/{0}",SelectController.instance.stageName));
        //leveldata = Resources.Load<LevelData>("Levels/Stage 1");
 

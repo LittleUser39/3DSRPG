@@ -78,4 +78,5 @@ using Party = System.Collections.Generic.List<Unit>;
             Debug.Log(string.Format("Name:{0} Level:{1} Exp:{2}", actor.name, rank.LVL, rank.EXP));
         }
     }
+
 }
