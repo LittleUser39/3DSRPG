@@ -18,7 +18,6 @@ public abstract class BattleState : State
     public Point pos { get { return owner.pos; } set { owner.pos = value; } }
     public StatPanelController statPanelController { get { return owner.StatPanelController; } }
     public HitSuccessIndicator HitSuccessIndicator { get { return owner.HitSuccessIndicator; } }
-
     public int stageEXP { get { return owner.stageEXP; } }
    
     public override void Enter()

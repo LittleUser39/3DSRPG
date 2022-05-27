@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa75e68c25306de42abcbed33f9ad949, type: 3}
   m_Name: Rogue
   m_EditorClassIdentifier: 
-  modle: Hero
+  modle: Skeleton
   job: Rogue
   attack: Common/Attack
   abilityCatalog: DemoCatalog
   locomotions: 0
   alliances: 2
+  strategy: 

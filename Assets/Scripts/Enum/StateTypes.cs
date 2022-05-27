@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 //능력치 리스트 열거형
 //enum 정수 숫자 형식의 명명된 상수 집합에 의해 정의되는 값형식
@@ -22,6 +23,7 @@ public enum StateTypes
     SPD, // Speed   속도
     MOV, // Move Range  이동 범위
     JMP, // Jump Height 점프 범위
-    CTR, //Counter-for turn order
+    CTR, // Counter-for turn order
     Count
 }
+

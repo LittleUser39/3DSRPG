@@ -28,7 +28,7 @@ public class InitBattleState : BattleState
         //현재 상태를 movetargetstate로 변경
         owner.ChangeState<MoveTargetState>();
 
-        // todo 여기서 몬스터랑 영웅 추가 해주면 될듯?
+        // 여기서 몬스터랑 영웅 추가 해주면 될듯?
         SpwanUnits();
         
         // 임시 코드(영웅을 소환)
@@ -111,7 +111,11 @@ public class InitBattleState : BattleState
             //유닛의 바라보는 방향 랜덤으로 생성
             unit.dir = (Directions)UnityEngine.Random.Range(0, 4);
             unit.Match();
-
+            
+            // 다음 전투로 넘어갈때 AP 초기화가 안되더라 - 완료 - 
+            Stats stats = unit.GetComponent<Stats>();
+            stats.SetValue(StateTypes.CTR, 0, false);
+            
             //유닛을 추가
             units.Add(unit);
         }
@@ -132,7 +136,8 @@ public class InitBattleState : BattleState
             //유닛의 바라보는 방향 랜덤으로 생성
             unit.dir = (Directions)UnityEngine.Random.Range(0, 4);
             unit.Match();
-
+            
+            
             //유닛을 추가
             units.Add(unit);
         }
@@ -192,6 +197,7 @@ public class InitBattleState : BattleState
         SelectTile(units[0].tile.pos);
     }
 
+    //스테이지 별로 몬스터 추가하는 함수
     List<GameObject> AddStageMonster(string levelData)
     {
         string[] recipes =new string[3];
@@ -199,6 +205,7 @@ public class InitBattleState : BattleState
         int level = 1;
         List<GameObject> instance = new List<GameObject>();
 
+        //여기서 추가하면 됨
         switch (stage)
         { 
          case "Stage 1":
@@ -256,6 +263,8 @@ public class InitBattleState : BattleState
 // 지금 문제가 제일 처음에 전투하는 것은 그냥 새로 만들면 되는데 (데이터를)
 // 두번째 전투 부터는 이제 프리팹은 새로 만든다 치는데
 // 전투를 했던 나의 유닛들의 데이터를 덮어씌워야함
+// *컨테이너에 보관후 그 컨테이너를 부수지 않고 계속 이용하는 방식으로 구현*
+
 
 // 스테이지 나눠야함 스테이지 별로 함수를 만들지 스트링 가져와서 만들지 선택
 // 몬스터 만드는건 그냥 데이터 만들고 프리팹 설정하고 하면되서 데이터 영역에서 만들기만 하면 됨

@@ -10,9 +10,12 @@ public class CommandSelectionState : BaseAbilityMenuState
     {
         //해당 상태가 되면 초상화 정보를 출력
         base.Enter();
+    
+   
         statPanelController.ShowPrimary(turn.actor.gameObject);
         if (driver.Current == Drivers.Computer)
             StartCoroutine(ComputerTurn());
+       
     }
     public override void Exit()
     {

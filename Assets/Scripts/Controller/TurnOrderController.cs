@@ -9,10 +9,10 @@ public class TurnOrderController : MonoBehaviour
 {
     //턴비용(ex:공격만 하면 기본코스트 + 200 증가)
     #region
-    const int turnActivation = 1000;
-    const int turnCost = 500;
-    const int moveCost = 300;
-    const int actionCost = 200;
+    const int turnActivation = 800;
+    const int turnCost = 400;
+    const int moveCost = 200;
+    const int actionCost = 100;
     #endregion
 
     //델리게이트 키값들
@@ -46,6 +46,10 @@ public class TurnOrderController : MonoBehaviour
                 //매턴 마다 각 유닛이 SPD만큼 CTR이 증가
                 //todo 나중에 이곳 손보면 될듯 AP로
                 stats[StateTypes.CTR] += stats[StateTypes.SPD];
+                if(stats[StateTypes.CTR] > 1000)
+                {
+                    stats[StateTypes.CTR] = 1000;
+                }
             }
             //CTR이 높은 순서대로 정렬
             units.Sort((a, b) => GetCounter(a).CompareTo(GetCounter(b)));
@@ -80,9 +84,10 @@ public class TurnOrderController : MonoBehaviour
                         cost += actionCost;
 
                     Stats stats = units[i].GetComponent<Stats>();
-                    //cost만큼 CTR 수치를 감소
+                    // cost만큼 CTR 수치를 감소
+                    // 행동 종료후 남은 AP를 계산하는 함수
                     stats.SetValue(StateTypes.CTR, stats[StateTypes.CTR] - cost, false);
-
+                    
                     //TurnOrderController.turnComplate 키를 가진 델리게이트 호출
                     units[i].PostNotification(TurnComplatedNotification);
                 }
@@ -106,3 +111,14 @@ public class TurnOrderController : MonoBehaviour
         return target.GetComponent<Stats>()[StateTypes.CTR];
     }
 }
+
+
+// AP는 무조건로 시작
+// 턴 시작시 마다 SPD를 가져와서 AP를 채움 EX) SPD = 100 AP = 0 -> AP = 100
+// 전투가 시작됨 무조건 AP를 소모 TurnCost 50  AP = 50
+// 선택지가 나뉨 1.대기,2.이동,3.공격 4. 스킬  AP 사용 
+//      이동 COST 에 +20, 공격 +30, 이동 공격 +50
+// 1. 대기시 그냥 지나감 그럼 다음 턴에 AP = 150 
+// 2. 이동시 다음턴 AP = 120
+// 3. 공격시 다음턴 AP = 130
+// 4. 이동 공격시 다음턴 AP = 100

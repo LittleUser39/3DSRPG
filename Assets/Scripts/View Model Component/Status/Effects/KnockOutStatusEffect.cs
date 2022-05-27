@@ -7,21 +7,25 @@ using UnityEngine;
 public class KnockOutStatusEffect : StatusEffect
 {
     Unit owner;
+    Animator animator;
     Stats stats;
     private void Awake()
     {
         owner = GetComponentInParent<Unit>();
         stats = owner.GetComponent<Stats>();
+        animator = owner.GetComponent<Animator>();
     }
     private void OnEnable()
     {
-        owner.transform.localScale = new Vector3(0.75f, 0.1f, 0.75f);
+       // owner.transform.localScale = new Vector3(0.75f, 0.1f, 0.75f);
+        animator.SetBool("Die", true);
         this.AddObserver(OnTurnCheck, TurnOrderController.TurnCheckNotification, owner);
         this.AddObserver(OnStatCountWillChange, Stats.WillChangeNotification(StateTypes.CTR), stats);
     }
     private void OnDisable()
     {
-        owner.transform.localScale = Vector3.one;
+        //owner.transform.localScale = Vector3.one;
+        animator.SetBool("Die", false);
         this.RemoveObserver(OnTurnCheck, TurnOrderController.TurnCheckNotification, owner);
         this.RemoveObserver(OnStatCountWillChange, Stats.WillChangeNotification(StateTypes.CTR), stats);
     }

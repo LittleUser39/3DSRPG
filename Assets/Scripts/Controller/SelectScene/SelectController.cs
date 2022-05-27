@@ -17,11 +17,15 @@ public class SelectController : MonoBehaviour
     private void Awake()
     {
         _instance = this;
+        heroPanel.SetActive(false);
     }
 
     //스테이지 이름
     public string stageName;
-   
+
+    //영웅 스텟창
+    public GameObject heroPanel;
+
     //장면 변경
     public void ChangeScene(string scene)
     {

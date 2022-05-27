@@ -40,7 +40,7 @@ public class StatPanel : MonoBehaviour
         if(stats)
         {
             hpLable.text = string.Format("HP{0}/{1}", stats[StateTypes.HP], stats[StateTypes.MHP]);
-            mpLable.text = string.Format("MP{0}/{1}", stats[StateTypes.MP], stats[StateTypes.MMP]);
+            mpLable.text = string.Format("MP{0}/{1}", stats[StateTypes.CTR], stats[StateTypes.MMP]);
             lvLable.text = string.Format("LV.{0}", stats[StateTypes.LVL]);
         }
     }

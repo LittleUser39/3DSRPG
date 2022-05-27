@@ -16,6 +16,7 @@ public class Stats : MonoBehaviour
     }
     int[] _data = new int[(int)StateTypes.Count];
 
+    
     public void SetValue(StateTypes type,int value,bool allowExceptions)
     {
         //data[type] 값이 oldvalue 에 들어간다(기존 수치)
@@ -26,6 +27,7 @@ public class Stats : MonoBehaviour
         {
             return;
         }
+        //이게 true 이면 아마 랜덤으로 계산한다는 것일듯?
         if (allowExceptions)
         {
             //계산기를 만듬, 아직 어떤 계산이 될지 미정

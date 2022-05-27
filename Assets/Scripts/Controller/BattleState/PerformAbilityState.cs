@@ -12,10 +12,8 @@ public class PerformAbilityState : BattleState
         base.Enter();
 
         //해당 턴의 유닛의 애니메이션을 가져옴
-        if (turn.actor.GetComponent<Animator>() != null)
-        {
-            animator = turn.actor.GetComponent<Animator>();
-        }
+        animator = turn.actor.GetComponent<Animator>();
+
         turn.hasUnitActed = true;
         if(turn.hasUnitMoved)
         {
@@ -25,7 +23,7 @@ public class PerformAbilityState : BattleState
     }
     IEnumerator Animate()
     {
-        //todo 나중에 여기서 애니메이션 재생해야함,
+        //나중에 여기서 애니메이션 재생해야함,
         if(animator!=null)
          animator.SetBool("Attack", true);
         yield return new WaitForSeconds(1);
