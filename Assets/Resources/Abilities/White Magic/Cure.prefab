@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0d6e397aca738f4586f01ed2412d3a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skilEffect: {fileID: 0}
 --- !u!114 &7733290349878094614
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,7 +231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54d02b1437b53594aa827056f51ad4de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  toggle: 0
+  toggle: 1
 --- !u!114 &4300237868305576103
 MonoBehaviour:
   m_ObjectHideFlags: 0

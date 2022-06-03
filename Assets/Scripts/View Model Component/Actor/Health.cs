@@ -44,7 +44,8 @@ public class Health : MonoBehaviour
     void OnWillChangeHP(object sender,object args)
     {
         ValueChangeException vce = args as ValueChangeException;
-        vce.AddModifier(new ClampValueModifier(int.MaxValue, minHP, stats[StateTypes.HP]));
+        //영향을 줄값 최소값 최대값
+        vce.AddModifier(new ClampValueModifier(int.MaxValue, minHP, stats[StateTypes.MHP]));
     }
     void OnWillChangeMHP(object sender,object args)
     {

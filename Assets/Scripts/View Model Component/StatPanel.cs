@@ -14,7 +14,7 @@ public class StatPanel : MonoBehaviour
     public Image avatar;
     public Text nameLable;
     public Text hpLable;
-    public Text mpLable;
+    public Text apLable;
     public Text lvLable;
 
     public void Display(GameObject obj)
@@ -40,7 +40,7 @@ public class StatPanel : MonoBehaviour
         if(stats)
         {
             hpLable.text = string.Format("HP{0}/{1}", stats[StateTypes.HP], stats[StateTypes.MHP]);
-            mpLable.text = string.Format("MP{0}/{1}", stats[StateTypes.CTR], stats[StateTypes.MMP]);
+            apLable.text = string.Format("AP{0}", stats[StateTypes.AP]);
             lvLable.text = string.Format("LV.{0}", stats[StateTypes.LVL]);
         }
     }

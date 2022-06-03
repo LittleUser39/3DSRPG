@@ -23,6 +23,7 @@ public enum StateTypes
     SPD, // Speed   속도
     MOV, // Move Range  이동 범위
     JMP, // Jump Height 점프 범위
+    AP,  // ActivePoint 
     CTR, // Counter-for turn order
     Count
 }

@@ -60,6 +60,10 @@
     <Compile Include="Assets\Editor\JobParser.cs" />
     <Compile Include="Assets\Editor\ScriptableObjectUtility.cs" />
     <Compile Include="Assets\Editor\TileCreatorInspector.cs" />
+    <Compile Include="Assets\None\SD Unity-Chan Haon Custom\Shader\Unity-chan Toon Shader Ver 2.0.6\Editor\CopyMaterialParameter.cs" />
+    <Compile Include="Assets\None\SD Unity-Chan Haon Custom\Shader\Unity-chan Toon Shader Ver 2.0.6\Editor\RemoveUnusedMaterialProperties.cs" />
+    <Compile Include="Assets\None\SD Unity-Chan Haon Custom\Shader\Unity-chan Toon Shader Ver 2.0.6\Editor\RemoveUnusedShaderKeywordsFromUTS2Material.cs" />
+    <Compile Include="Assets\None\SD Unity-Chan Haon Custom\Shader\Unity-chan Toon Shader Ver 2.0.6\Editor\UTS2GUI.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

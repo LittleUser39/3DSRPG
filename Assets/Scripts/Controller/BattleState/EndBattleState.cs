@@ -11,7 +11,6 @@ public class EndBattleState : BattleState
     public override void Enter()
     {
         base.Enter();
-
         ExperienceManger.AwardExperience(stageEXP, units);
         ExperienceManger.LogParty(units);
         for(int i=0;i < units.Count;++i)
@@ -21,8 +20,8 @@ public class EndBattleState : BattleState
         //전투가 끝난후 전투한 유닛들 넣어둔 리스트 클리어
         //이거 넣어서 오류 수정함 비워줘야했음
         units.Clear();
-       
-        //이거 바꿔야함
+        
+        //선택 장면으로 이동
        Application.LoadLevel(0);
     }
 }

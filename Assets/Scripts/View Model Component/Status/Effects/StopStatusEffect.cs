@@ -9,12 +9,12 @@ public class StopStatusEffect : StatusEffect
     {
         myStats = GetComponent<Stats>();
         if (myStats)
-            this.AddObserver(OnCounterWillChange, Stats.WillChangeNotification(StateTypes.CTR), myStats);
+            this.AddObserver(OnCounterWillChange, Stats.WillChangeNotification(StateTypes.AP), myStats);
         this.AddObserver(OnAutomaticHitCheck, HitRate.AutomaticHitCheckNotification);
     }
     private void OnDisable()
     {
-        this.RemoveObserver(OnCounterWillChange, Stats.WillChangeNotification(StateTypes.CTR), myStats);
+        this.RemoveObserver(OnCounterWillChange, Stats.WillChangeNotification(StateTypes.AP), myStats);
     }
     void OnCounterWillChange(object sender,object args)
     {

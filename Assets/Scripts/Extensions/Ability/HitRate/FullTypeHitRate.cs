@@ -13,7 +13,9 @@ public class FullTypeHitRate : HitRate
     {
         Unit defender = target.content.GetComponent<Unit>();
         //AutomaticMiss에서 true가 반환 되지 않으면 무조건 적용되는 타입
-        if (AutomaticMiss(defender)) return Final(100);
+        if (AutomaticMiss(defender)) 
+            return Final(100);
+        
         return Final(0);
     }
 }

@@ -21,9 +21,15 @@ public abstract class BaseAbilityEffect : MonoBehaviour
         if (GetComponent<AbilityEffectTarget>().IsTarget(target) == false)
             return;
         if (GetComponent<HitRate>().RollForHit(target))
+        {
+            DamageText.instance.SetHit(true);
             this.PostNotification(HitNotification, OnApply(target));
+        }
         else
+        {
+            DamageText.instance.SetHit(false);
             this.PostNotification(MissedNotification);
+        }
     }
     public abstract int OnApply(Tile target);
     protected virtual int GetStat(Unit attacker, Unit target, string notification, int startValue)
@@ -42,6 +48,7 @@ public abstract class BaseAbilityEffect : MonoBehaviour
         {
             value = mods[i].Modify(startValue, value);
         }
+
         int retValue = Mathf.FloorToInt(value);
 
         retValue = Mathf.Clamp(retValue, minDamage, maxDamage);

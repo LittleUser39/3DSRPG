@@ -114,7 +114,7 @@ public class InitBattleState : BattleState
             
             // 다음 전투로 넘어갈때 AP 초기화가 안되더라 - 완료 - 
             Stats stats = unit.GetComponent<Stats>();
-            stats.SetValue(StateTypes.CTR, 0, false);
+            stats.SetValue(StateTypes.AP, 0, false);
             
             //유닛을 추가
             units.Add(unit);

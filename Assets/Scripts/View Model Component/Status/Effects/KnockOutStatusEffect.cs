@@ -20,14 +20,14 @@ public class KnockOutStatusEffect : StatusEffect
        // owner.transform.localScale = new Vector3(0.75f, 0.1f, 0.75f);
         animator.SetBool("Die", true);
         this.AddObserver(OnTurnCheck, TurnOrderController.TurnCheckNotification, owner);
-        this.AddObserver(OnStatCountWillChange, Stats.WillChangeNotification(StateTypes.CTR), stats);
+        this.AddObserver(OnStatCountWillChange, Stats.WillChangeNotification(StateTypes.AP), stats);
     }
     private void OnDisable()
     {
         //owner.transform.localScale = Vector3.one;
         animator.SetBool("Die", false);
         this.RemoveObserver(OnTurnCheck, TurnOrderController.TurnCheckNotification, owner);
-        this.RemoveObserver(OnStatCountWillChange, Stats.WillChangeNotification(StateTypes.CTR), stats);
+        this.RemoveObserver(OnStatCountWillChange, Stats.WillChangeNotification(StateTypes.AP), stats);
     }
     void OnTurnCheck(object sender,object args)
     {

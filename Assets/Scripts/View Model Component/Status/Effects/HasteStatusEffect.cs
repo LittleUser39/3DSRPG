@@ -12,11 +12,11 @@ public class HasteStatusEffect : StatusEffect
         myStats = GetComponent<Stats>();
 
         if (myStats)
-            this.AddObserver(OnCounterWillChange, Stats.WillChangeNotification(StateTypes.CTR), myStats);
+            this.AddObserver(OnCounterWillChange, Stats.WillChangeNotification(StateTypes.AP), myStats);
     }
     private void OnDisable()
     {
-        this.RemoveObserver(OnCounterWillChange, Stats.WillChangeNotification(StateTypes.CTR), myStats);
+        this.RemoveObserver(OnCounterWillChange, Stats.WillChangeNotification(StateTypes.AP), myStats);
     }
     void OnCounterWillChange(object sender,object args)
     {

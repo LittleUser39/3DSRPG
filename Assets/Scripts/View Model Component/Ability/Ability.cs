@@ -9,7 +9,7 @@ public class Ability : MonoBehaviour
     public const string CanPerformCheck = "Ability.CanPerformCheck";
     public const string FailedNotification = "Ability.FailedNotification";
     public const string DidPerformNotification = "Ability.DidPerformNotification";
-
+    public GameObject skilEffect;
     public bool CanPerform()
     {
         BaseException exc = new BaseException(true);
@@ -24,9 +24,14 @@ public class Ability : MonoBehaviour
             return;
         }
 
-        for(int i =0;i < targets.Count;++i)
+        for (int i = 0; i < targets.Count; ++i)
         {
             Perform(targets[i]);
+            //이펙트를 생성 잘됨 야호
+            if (skilEffect != null)
+            {
+                Instantiate(skilEffect, targets[i].transform.position, Quaternion.identity);
+            }
         }
         this.PostNotification(DidPerformNotification);
     }

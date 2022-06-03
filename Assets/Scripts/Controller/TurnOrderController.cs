@@ -9,10 +9,10 @@ public class TurnOrderController : MonoBehaviour
 {
     //턴비용(ex:공격만 하면 기본코스트 + 200 증가)
     #region
-    const int turnActivation = 800;
-    const int turnCost = 400;
-    const int moveCost = 200;
-    const int actionCost = 100;
+    const int turnActivation = 70;
+    const int turnCost = 40;
+    const int moveCost = 20;
+    const int actionCost = 10;
     #endregion
 
     //델리게이트 키값들
@@ -45,10 +45,10 @@ public class TurnOrderController : MonoBehaviour
                 Stats stats = units[i].GetComponent<Stats>();
                 //매턴 마다 각 유닛이 SPD만큼 CTR이 증가
                 //todo 나중에 이곳 손보면 될듯 AP로
-                stats[StateTypes.CTR] += stats[StateTypes.SPD];
-                if(stats[StateTypes.CTR] > 1000)
+                stats[StateTypes.AP] += stats[StateTypes.SPD];
+                if(stats[StateTypes.AP] > 100)
                 {
-                    stats[StateTypes.CTR] = 1000;
+                    stats[StateTypes.AP] = 100;
                 }
             }
             //CTR이 높은 순서대로 정렬
@@ -71,22 +71,22 @@ public class TurnOrderController : MonoBehaviour
                     //owner.round.MoveNext 에서 종료됨
                     yield return units[i];
 
-                    //기본 턴 코스트 500
+                    //기본 턴 코스트 40
                     int cost = turnCost;
 
                     //유닛이 이동을 했다면
                     if (bc.turn.hasUnitMoved)
-                        //기본코스트에 300을 더함
+                        //기본코스트에 20을 더함
                         cost += moveCost;
                     //유닛이 공격을 했다면
                     if (bc.turn.hasUnitActed)
-                        //기본 코스트에 200을 더함
+                        //기본 코스트에 10을 더함
                         cost += actionCost;
 
                     Stats stats = units[i].GetComponent<Stats>();
                     // cost만큼 CTR 수치를 감소
                     // 행동 종료후 남은 AP를 계산하는 함수
-                    stats.SetValue(StateTypes.CTR, stats[StateTypes.CTR] - cost, false);
+                    stats.SetValue(StateTypes.AP, stats[StateTypes.AP] - cost, false);
                     
                     //TurnOrderController.turnComplate 키를 가진 델리게이트 호출
                     units[i].PostNotification(TurnComplatedNotification);
@@ -108,7 +108,7 @@ public class TurnOrderController : MonoBehaviour
     int GetCounter(Unit target)
     {
         //인덱서로 CTR수치를 반환
-        return target.GetComponent<Stats>()[StateTypes.CTR];
+        return target.GetComponent<Stats>()[StateTypes.AP];
     }
 }
 

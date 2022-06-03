@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0d6e397aca738f4586f01ed2412d3a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skilEffect: {fileID: 1382866938869824, guid: bd7ae03a333dabc42930f1136aab404c, type: 3}
 --- !u!114 &1894511600525397030
 MonoBehaviour:
   m_ObjectHideFlags: 0

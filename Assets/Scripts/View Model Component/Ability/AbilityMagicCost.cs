@@ -27,7 +27,7 @@ public class AbilityMagicCost : MonoBehaviour
     void OnCanPerformCheck(object sender,object args)
     {
         Stats stats = GetComponentInParent<Stats>();
-        if(stats[StateTypes.MP] < amount)
+        if(stats[StateTypes.AP] < amount)
         {
             BaseException exc = (BaseException)args;
             exc.FlipToggle();
@@ -36,6 +36,6 @@ public class AbilityMagicCost : MonoBehaviour
     void OnDidPerformNotification(object sender,object args)
     {
         Stats stats = GetComponentInParent<Stats>();
-        stats[StateTypes.MP] -= amount;
+        stats[StateTypes.AP] -= amount;
     }
 }

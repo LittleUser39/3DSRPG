@@ -107,6 +107,7 @@ public class ConfirmAbilityTargetState : BattleState
             UpdateHitSuccessIndicator();
         }
     }
+    //공격 성공 하는 확률을 보여주는 함수
     void UpdateHitSuccessIndicator()
     {
         //타겟의 회피?
@@ -115,7 +116,6 @@ public class ConfirmAbilityTargetState : BattleState
         int amount = 0;
         //타일위에 있는 타겟이 들어있는 배열
         Tile target = turn.targets[index];
-        
         Transform obj = turn.ability.transform;
         
         for (int i = 0; i < obj.childCount; ++i)
@@ -136,9 +136,9 @@ public class ConfirmAbilityTargetState : BattleState
         //두개의 매개변수에 따라 UI의 FillAmount 값이 변경됨
         HitSuccessIndicator.SetStats(chance, amount);
 
-        //공격자 피격자 데미지 저장
-        owner.damageText.SetDamage(target.content.name,amount);
-   
+        
+        DamageText.instance.SetTarget(target.content.name);
+        DamageText.instance.SetDamage(amount);
     }
   
 

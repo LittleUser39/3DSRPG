@@ -19,6 +19,7 @@ public class HealAbilityEffect : BaseAbilityEffect
         value = Mathf.FloorToInt(value * UnityEngine.Random.Range(0.9f, 1.1f));
 
         value = Mathf.Clamp(value, minDamage, maxDamage);
+        DamageText.instance.SetHeal(true);
 
         Stats stats = defender.GetComponent<Stats>();
         stats[StateTypes.HP] += value;

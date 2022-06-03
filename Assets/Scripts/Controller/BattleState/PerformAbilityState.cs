@@ -7,6 +7,7 @@ using UnityEngine;
 public class PerformAbilityState : BattleState
 {
     Animator animator;
+    bool hit;
     public override void Enter()
     {
         base.Enter();
@@ -26,13 +27,16 @@ public class PerformAbilityState : BattleState
         //나중에 여기서 애니메이션 재생해야함,
         if(animator!=null)
          animator.SetBool("Attack", true);
-        yield return new WaitForSeconds(1);
+        
+        yield return new WaitForSeconds(1f);
+        
         if(animator!=null)
            animator.SetBool("Attack", false);
-        ApplyAbility();
         
+        ApplyAbility();
+
         //여기서 데미지 나오는거 플레이
-        owner.damageText.Display();
+       DamageText.instance.Display();
        
         //전투가 끝남
         if(IsBattleOver())
@@ -63,15 +67,6 @@ public class PerformAbilityState : BattleState
    
     void ApplyAbility()
     {
-        //이펙트 출력하는 것 test
-        //if (turn.ability.name == "Water")   
-        //{
-        //    for(int i=0;i < turn.targets.Count; ++i)
-        //    {
-        //      var waterPrefab = Instantiate(owner.effect, turn.targets[i].transform.position + new Vector3(0, 1f, 0), Quaternion.identity);
-        //    }
-        //}
-        
         //능력 확인시 ability 클래스로 이동해서 perform 함수 실행
         turn.ability.Perform(turn.targets);
     }

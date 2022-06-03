@@ -13,7 +13,6 @@ public abstract class HitRate : MonoBehaviour
     public const string StatusCheckNotification = "HitRate.StatusCheckNotification";
    
     protected Unit attacker;
-
     //공격자는 이미 자신의 정보를 가지고 있다
     //tile에 해당 유닛의 정보가 저장되어 있다
     //  public abstract int Calculate(Unit attacker, Unit target);
@@ -23,13 +22,16 @@ public abstract class HitRate : MonoBehaviour
     public virtual bool IsAngleBased { get { return true; } }
 
     //명중하는 것을 랜덤으로 정해주는 함수인것 같음
+    //능력치에 따라 명중하는 것을 정해주는 함수 같음
     public virtual bool RollForHit(Tile target)
     {
         //롤을 랜덤으로 정하고 찬스는 타겟의 능력치를 가져와서 
         //롤이 낮으면 true 높으면 fasle
         int roll = UnityEngine.Random.Range(0, 101);
         int chance = Calculate(target);
-        return roll<=chance;
+        
+     
+        return roll <= chance;
     }
     protected virtual void Start()
     {

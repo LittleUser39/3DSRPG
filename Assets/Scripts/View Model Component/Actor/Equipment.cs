@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 
 //아이템을 장착하거나 장착해제하는 기능들을 하는 클래스
+//유닛에 이 스크립트를 추가하면 장비를 장착할수 있게됨
 public class Equipment : MonoBehaviour
 {
     public const string EquippedNotification = "Equipment.EquippedNotification";
@@ -12,10 +13,11 @@ public class Equipment : MonoBehaviour
     public IList<Equippable> Items { get { return _items.AsReadOnly(); } }
 
     //장착중인 아이템 리스트
-    List<Equippable> _items = new List<Equippable>();
+    public List<Equippable> _items = new List<Equippable>();
 
     public void Equip(Equippable item,EquipSlots slots)
     {
+        
         //해당 슬롯에 다른 아이템이 있으면 벗긴다
         UnEquip(slots);
 
@@ -23,6 +25,7 @@ public class Equipment : MonoBehaviour
         _items.Add(item);
 
         //해당 아이템이 장착하는 유닛의 자식오브젝트가 됨
+        
         item.transform.SetParent(transform);
         item.slots = slots;
 
