@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa75e68c25306de42abcbed33f9ad949, type: 3}
   m_Name: Enemy Warrior
   m_EditorClassIdentifier: 
-  modle: Spore 1
+  modle: Enemy
   job: Warrior
   attack: Common/Attack
   abilityCatalog: EnemyWarrior

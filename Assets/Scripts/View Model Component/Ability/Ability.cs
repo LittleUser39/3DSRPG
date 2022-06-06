@@ -16,22 +16,26 @@ public class Ability : MonoBehaviour
         this.PostNotification(CanPerformCheck, exc);
         return exc.toggle;
     }
-    public void Perform(List<Tile> targets)
+    public void Perform(List<Tile> targets,List<Tile> range)
     {
         if(!CanPerform())
         {
             this.PostNotification(FailedNotification);
             return;
         }
+        //이펙트를 생성 잘됨 야호
+        if (skilEffect != null)
+        {
+            for(int i=0;i < range.Count;++i)
+            {
+                Instantiate(skilEffect, range[i].transform.position, Quaternion.identity);
+            }
+        }
 
         for (int i = 0; i < targets.Count; ++i)
         {
             Perform(targets[i]);
-            //이펙트를 생성 잘됨 야호
-            if (skilEffect != null)
-            {
-                Instantiate(skilEffect, targets[i].transform.position, Quaternion.identity);
-            }
+           
         }
         this.PostNotification(DidPerformNotification);
     }

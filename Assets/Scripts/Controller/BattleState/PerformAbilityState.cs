@@ -7,10 +7,17 @@ using UnityEngine;
 public class PerformAbilityState : BattleState
 {
     Animator animator;
+    List<Tile> tiles;
+    AbilityArea area;
     bool hit;
     public override void Enter()
     {
         base.Enter();
+        
+        //시전자의 피격타입을 참조
+        area = turn.ability.GetComponent<AbilityArea>();
+        //피격범위내의 타일들을 참조
+        tiles = area.GetTilesInArea(board, pos);
 
         //해당 턴의 유닛의 애니메이션을 가져옴
         animator = turn.actor.GetComponent<Animator>();
@@ -68,7 +75,7 @@ public class PerformAbilityState : BattleState
     void ApplyAbility()
     {
         //능력 확인시 ability 클래스로 이동해서 perform 함수 실행
-        turn.ability.Perform(turn.targets);
+        turn.ability.Perform(turn.targets,tiles);
     }
     bool UnitHasControl()
     {
