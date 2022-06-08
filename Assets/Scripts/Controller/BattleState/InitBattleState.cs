@@ -35,7 +35,9 @@ public class InitBattleState : BattleState
         // SpawnTestUnits();
 
         //임시 코드(승리조건)
-        AddVictoryCondition();
+        if(levelData.ToString() == "Boss")
+            AddVictoryCondition();
+        AddVictoryCondition2();
         //라운드 코루틴을 등록
         owner.round = owner.gameObject.AddComponent<TurnOrderController>().Round();
         
@@ -58,6 +60,10 @@ public class InitBattleState : BattleState
         //일정 체력 이하로 설정(10) 체력 이하로 가면 승리하도록
         Health health = enemy.GetComponent<Health>();
         health.minHP = 50;
+    }
+    void AddVictoryCondition2()
+    {
+        DefeatAllEnemiesVictoryCondition vc = owner.gameObject.AddComponent<DefeatAllEnemiesVictoryCondition>();
     }
     
     //영웅과 몬스터를 각각 만들어서 배치해주는 함수

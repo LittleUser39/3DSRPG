@@ -38,6 +38,8 @@ public class Ability : MonoBehaviour
            
         }
         this.PostNotification(DidPerformNotification);
+
+        Destroy(skilEffect);
     }
     void Perform(Tile target)
     {

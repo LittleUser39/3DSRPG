@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa75e68c25306de42abcbed33f9ad949, type: 3}
   m_Name: Wizard
   m_EditorClassIdentifier: 
-  modle: Hero
+  modle: WizardChan
   job: Wizard
   attack: Common/Attack
   abilityCatalog: DemoCatalog

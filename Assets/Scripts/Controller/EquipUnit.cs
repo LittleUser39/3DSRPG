@@ -37,6 +37,6 @@ public class EquipUnit : MonoBehaviour
     public void UseItem()
     {
         Debug.Log(equippable.name + "가 사용되었습니다.");
-       // EquipItem(equippable);
+       //EquipItem(equippable);
     }
 }
