@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   list:
   - messages:
-    - Yes
-    speaker: {fileID: 21300000, guid: bd3a65bea01baf845a94c8cfae02d8c6, type: 3}
+    - "\uC804\uD22C\uB97C \uC2DC\uC791\uD569\uB2C8\uB2E4."
+    speaker: {fileID: 21300000, guid: c860c889fb5c46b4c9fa4971b9cc89b6, type: 3}
     anchor: 2
   - messages:
-    - NO
-    speaker: {fileID: 21300000, guid: bd3a65bea01baf845a94c8cfae02d8c6, type: 3}
+    - "\uC801\uC744 \uBAA8\uB450 \uCC98\uCE58\uD558\uC2ED\uC2DC\uC624."
+    speaker: {fileID: 21300000, guid: 914fe18a691f98d4cbf9d83c13041ac9, type: 3}
     anchor: 0
