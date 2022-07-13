@@ -287,7 +287,6 @@
     <None Include="Assets\None\SD Unity-Chan Haon Custom\Shader\Unity-chan Toon Shader Ver 2.0.6\Toon_ShadingGradeMap_AngelRing_Mobile.shader" />
     <None Include="Assets\None\Suriyun\UnityChanShader\Shader\Unitychan_chara_hair_ds.shader" />
     <None Include="Assets\None\SD Unity-Chan Haon Custom\Shader\Unity-chan Toon Shader Ver 2.0.6\ToonColor_DoubleShadeWithFeather_TransClipping_StencilOut.shader" />
-    <None Include="Assets\None\Fantasy Skybox FREE\Readme.txt" />
     <None Include="Assets\None\SD Unity-Chan Haon Custom\Shader\Unity-chan Toon Shader Ver 2.0.6\Tess\Toon_DoubleShadeWithFeather_Tess_Light.shader" />
     <None Include="Assets\None\SD Unity-Chan Haon Custom\Shader\Unity-chan Toon Shader Ver 2.0.6\ToonColor_ShadingGradeMap_StencilOut.shader" />
     <None Include="Assets\None\Suriyun\UnityChanShader\Shader\Unitychan_chara_hada.shader" />
@@ -304,7 +303,6 @@
     <None Include="Assets\None\SD Unity-Chan Haon Custom\Shader\Unity-chan Toon Shader Ver 2.0.6\Tess\Toon_DoubleShadeWithFeather_Clipping_Tess_StencilOut.shader" />
     <None Include="Assets\None\SD Unity-Chan Haon Custom\Shader\Unity-chan Toon Shader Ver 2.0.6\Toon_DoubleShadeWithFeather_Mobile_TransClipping.shader" />
     <None Include="Assets\None\SD Unity-Chan Haon Custom\Shader\Unity-chan Toon Shader Ver 2.0.6\Tess\Toon_ShadingGradeMap_AngelRing_TransClipping_Tess_StencilOut.shader" />
-    <None Include="Assets\None\Fantasy Skybox FREE\ReleaseNotes.txt" />
     <None Include="Assets\None\FantasySpellsEffectsPack\Shader_ForEffects\Dissolve Texture\Mobile\(Mobile)Shader_DissolveTexture(SimpleFade).shader" />
     <None Include="Assets\None\SD Unity-Chan Haon Custom\Shader\Unity-chan Toon Shader Ver 2.0.6\Tess\Toon_ShadingGradeMap_Tess_Light.shader" />
     <None Include="Assets\None\SD Unity-Chan Haon Custom\Shader\Unity-chan Toon Shader Ver 2.0.6\Toon_DoubleShadeWithFeather_Mobile_StencilOut.shader" />
