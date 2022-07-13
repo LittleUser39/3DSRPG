@@ -259,6 +259,7 @@ public class ComputerPlayer : MonoBehaviour
                  {
                      Unit unit = other.GetComponent<Unit>();
                      Stats stats = unit.GetComponent<Stats>();
+                     //체력이 0이상인 유닛 찾기
                      if (stats[StateTypes.HP] > 0)
                      {
                          nearestFoe = unit;

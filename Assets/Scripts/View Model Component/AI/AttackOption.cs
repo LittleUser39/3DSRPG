@@ -51,7 +51,7 @@ public class AttackOption
         marks.Add(new Mark(tile, isMatch));
     }
 
-    //턴 동안 사용할 수 있는 다양한 옵숀을 정렬 할 수 있는 점수를 제공
+    //턴 동안 사용할 수 있는 다양한 옵션을 정렬 할 수 있는 점수를 제공
     //점수를 계산하기 전에 능력을 사용하기 위해 이동할 최상의 타일도 찾는다
     //두번째 요소 (공격 각도)에 따라 좋은 점수를 받는다
     public int GetScore(Unit caster,Ability ability)
