@@ -59,6 +59,7 @@
     <Compile Include="Assets\Editor\AssetCreator.cs" />
     <Compile Include="Assets\Editor\JobParser.cs" />
     <Compile Include="Assets\Editor\ScriptableObjectUtility.cs" />
+    <Compile Include="Assets\Editor\TileCreator.cs" />
     <Compile Include="Assets\Editor\TileCreatorInspector.cs" />
     <Compile Include="Assets\None\SD Unity-Chan Haon Custom\Shader\Editor\CopyMaterialParameter.cs" />
     <Compile Include="Assets\None\SD Unity-Chan Haon Custom\Shader\Editor\RemoveUnusedMaterialProperties.cs" />

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RectTransformAnchorPositionTweener : Vector3Tweener
 {
-    RectTransform rt;
+    public RectTransform rt;
     void Awake()
     {
         rt = transform as RectTransform;

@@ -66,7 +66,6 @@ public class BattleController : StateMachine
         //여기서 맵을 만듦
         leveldata = Resources.Load<LevelData>(string.Format("Levels/{0}",SelectController.instance.stageName));
         //leveldata = Resources.Load<LevelData>("Levels/Stage 1");
-    
         ChangeState<InitBattleState>();
     }
     private void Update()

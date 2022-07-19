@@ -6,7 +6,7 @@ using UnityEngine;
 //전투에 들어가는 상태
 public class InitBattleState : BattleState
 {
- 
+   
     public override void Enter()
     {
         base.Enter();
@@ -14,6 +14,8 @@ public class InitBattleState : BattleState
     }
     IEnumerator Init()
     {
+        
+
         //타일맵 로드
         //레벨 데이터를 로드
         board.Load(levelData);
@@ -72,7 +74,6 @@ public class InitBattleState : BattleState
         
         GameObject heroContainer = GameObject.FindGameObjectWithTag("Container");
         GameObject unitContainer = new GameObject("Units");
-        
         unitContainer.transform.SetParent(owner.transform);
         //heroContainer.transform.SetParent(owner.transform);
         
@@ -81,7 +82,7 @@ public class InitBattleState : BattleState
         List<GameObject> monster = AddStageMonster(levelData.name);
 
         List<Tile> locations = new List<Tile>(board.tiles.Values);
-
+        
         // 영웅컨테이너가 비어 있으면 영웅 추가
         if (heroContainer.transform.childCount == 0)
         {

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class SelectMenu : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class SelectMenu : MonoBehaviour
         #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
         #else
-            Appliction.Quit();
+            Application.Quit();
         #endif
-    }
+   }
 }

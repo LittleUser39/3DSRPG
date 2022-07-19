@@ -7,7 +7,8 @@ public class PauseMenu : MonoBehaviour
    // 다른 스크립트에서 쉽게 접근이 가능하도록 static
   public bool GameIsPaused = false;
   public GameObject pauseMenuCanvas;
-    BattleState battlestate;
+ 
+  
     void Update()
   {
       if (Input.GetKeyDown(KeyCode.Escape))
@@ -41,7 +42,7 @@ public class PauseMenu : MonoBehaviour
   {
     
   }
-
+  
   public void ToMain()
   {
       Time.timeScale = 1f;

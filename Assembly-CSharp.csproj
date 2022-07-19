@@ -164,7 +164,6 @@
     <Compile Include="Assets\Scripts\Model\SpeakerData.cs" />
     <Compile Include="Assets\Scripts\Model\Turn.cs" />
     <Compile Include="Assets\Scripts\PauseMenu.cs" />
-    <Compile Include="Assets\Scripts\PreProduction\TileCreator.cs" />
     <Compile Include="Assets\Scripts\Scenes\ExitScen.cs" />
     <Compile Include="Assets\Scripts\SelectMenu.cs" />
     <Compile Include="Assets\Scripts\Temp\AnchorTests.cs" />

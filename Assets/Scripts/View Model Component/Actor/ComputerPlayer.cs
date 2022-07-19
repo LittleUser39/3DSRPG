@@ -55,12 +55,14 @@ public class ComputerPlayer : MonoBehaviour
         return poa;
     }
 
+    // AI의 기본 공격 패턴
     void DefaultAttackPattern(PlanOfAttack poa)
     {
         //첫번째 공격 능력을 가져옴
         poa.ability = actor.GetComponentInChildren<Ability>();
         poa.targets = Targets.Foe;
     }
+
     //능력 사용시 위치를 확인하는 함수
     //능력의 범위안 까지 이동함
   bool IsPositionIndependent(PlanOfAttack poa)
@@ -81,6 +83,7 @@ public class ComputerPlayer : MonoBehaviour
         AbilityRange range = poa.ability.GetComponent<AbilityRange>();
         return !range.directionOriented;
     }
+    //해당 스킬 범위에 상대방을 타겟하기 위하여 이동하는 함수
     void PlanDirectionIndependent(PlanOfAttack poa)
     {
         Tile startTile = actor.tile;

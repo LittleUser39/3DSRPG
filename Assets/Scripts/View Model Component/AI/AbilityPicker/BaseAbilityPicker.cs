@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//어떤 능력을 누가 우엇에 사용할지 정하는 클래스?
+//어떤 능력을 누가 무엇에 사용할지 정하는 클래스?
 public abstract class BaseAbilityPicker : MonoBehaviour
 {
     protected Unit owner;

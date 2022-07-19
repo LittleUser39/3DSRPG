@@ -6,6 +6,7 @@ public class AttackOption
 {
     //한쌍의 데이터를 보유하기 위해 mark라는 클래스 생성
     //개별 목록을 만드는것보다 오류가 덜 발생
+    //이동할려는 타일이 공격하거나 이동할수 있는 타일인치 체크하는 클래스 
    class Mark
     {
         public Tile Tile;
